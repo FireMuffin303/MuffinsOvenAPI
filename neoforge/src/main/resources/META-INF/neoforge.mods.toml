@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "muffinsmcapi"
+version = "${version}"
+displayName = "MuffinsMCAPI"
+authors = "FireMuffin303"
+description = '''
+
+'''
+#logoFile = ""
+
+[[dependencies.muffinsmcapi]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.muffinsmcapi]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+
+[[mixins]]
+config = "muffinsmcapi.mixins.json"
+
+[[mixins]]
+config = "muffinsmcapi.neoforge.mixins.json"

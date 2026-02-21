@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "plugin": "net.firemuffin303.muffinsmcapi.common.MuffinsMixinPlugin",
+  "package": "net.firemuffin303.muffinsmcapi.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "camera.CameraMixin",
+    "customEffect.AbstractContainerScreenAccessor",
+    "customEffect.EffectRenderingInventoryScreenMixin",
+    "customEffect.GuiMixin"
+  ],
+  "mixins": [
+    "dripstone.PointedDripstoneBlockMixin",
+    "dripstone.fabric.FabricDripstoneBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0-rc.1"
+  }
+}
