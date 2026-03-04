@@ -26,6 +26,16 @@ configurations {
 
 loom{
     accessWidenerPath = project(":common").loom.accessWidenerPath
+
+    neoForge {
+        runs{
+            data{
+                data()
+                programArgs( '--mod','muffinsmcapi',
+                        '--output',file('src/generated/resources').getAbsolutePath())
+            }
+        }
+    }
 }
 
 repositories {

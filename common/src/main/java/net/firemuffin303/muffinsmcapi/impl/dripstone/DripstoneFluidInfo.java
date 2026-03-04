@@ -7,5 +7,4 @@ import net.minecraft.world.level.material.Fluid;
 public record DripstoneFluidInfo(BlockPos blockPos, Fluid fluid, BlockState blockState) {
 
 
-
 }

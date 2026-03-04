@@ -2,7 +2,7 @@ package net.firemuffin303.muffinsmcapi.neoforge.mixin.dripstone;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.firemuffin303.muffinsmcapi.api.DripstoneFluidRegistry;
+import net.firemuffin303.muffinsmcapi.api.dripstone.DripstoneFluidRegistry;
 import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.Mixin;

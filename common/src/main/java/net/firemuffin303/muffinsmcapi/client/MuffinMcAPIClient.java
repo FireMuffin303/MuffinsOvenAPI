@@ -5,6 +5,7 @@ import net.firemuffin303.muffinsmcapi.api.CustomEffectRegistry;
 import net.firemuffin303.muffinsmcapi.api.ModIntegrationRegistry;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectRenderer;
 import net.firemuffin303.muffinsmcapi.network.camera.CameraShakePacket;
+import net.firemuffin303.muffinsmcapi.network.customRaid.CustomRaidDebugPacket;
 import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
@@ -19,6 +20,7 @@ public class MuffinMcAPIClient {
         CustomEffectRegistry.init();
 
         PlatformUtil.registerClientPacket(CameraShakePacket.TYPE,CameraShakePacket.STREAM_CODEC);
+        PlatformUtil.registerClientPacket(CustomRaidDebugPacket.TYPE,CustomRaidDebugPacket.STREAM_CODEC);
 
 
 

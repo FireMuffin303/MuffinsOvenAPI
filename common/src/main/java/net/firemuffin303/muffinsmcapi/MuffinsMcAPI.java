@@ -1,20 +1,10 @@
 package net.firemuffin303.muffinsmcapi;
 
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import net.firemuffin303.muffinsmcapi.api.CameraAPI;
-import net.firemuffin303.muffinsmcapi.api.DripstoneFluidRegistry;
+import net.firemuffin303.muffinsmcapi.api.dripstone.DripstoneFluidRegistry;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.DripstoneFluidEvent;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +16,7 @@ public final class MuffinsMcAPI {
     public static final String MOD_ID = "muffinsmcapi";
 
     public static void init() {
-        DripstoneFluidRegistry.register(Blocks.CRYING_OBSIDIAN.defaultBlockState(), Fluids.LAVA);
+        //DripstoneFluidRegistry.register(Blocks.CRYING_OBSIDIAN.defaultBlockState(), Fluids.LAVA);
         DripstoneFluidRegistry.SOURCE_STATE_EVENT.add(new DripstoneFluidEvent() {
             @Override
             public void onSourceStateChange(ServerLevel level,BlockPos tipPos, BlockPos sourcePos, BlockState sourceState, Fluid fluid) {
@@ -43,10 +33,8 @@ public final class MuffinsMcAPI {
                 }
             }
         });
+
     }
-
-
-
 
     public static ResourceLocation modid(String id){
         return ResourceLocation.fromNamespaceAndPath(MOD_ID,id);

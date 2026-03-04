@@ -5,7 +5,6 @@ import net.firemuffin303.muffinsmcapi.api.CameraAPI;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 
 public record CameraShakePacket(float shakeIntensity,float shakeReductionRate) implements CustomPacketPayload {
     public static final StreamCodec<FriendlyByteBuf,CameraShakePacket> STREAM_CODEC = CustomPacketPayload.codec(CameraShakePacket::write,CameraShakePacket::new);

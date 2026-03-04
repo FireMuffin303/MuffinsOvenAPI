@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.api;
+package net.firemuffin303.muffinsmcapi.api.dripstone;
 
 import net.firemuffin303.muffinsmcapi.impl.dripstone.DripstoneFluidEvent;
 import net.minecraft.world.level.block.state.BlockState;

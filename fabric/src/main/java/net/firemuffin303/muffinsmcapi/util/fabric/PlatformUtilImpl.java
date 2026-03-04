@@ -56,5 +56,10 @@ public class PlatformUtilImpl {
         return EmiAgnos.isForge();
     }
 
+    public static boolean isDevelopment() {
+        return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+
 
 }

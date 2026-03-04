@@ -11,8 +11,10 @@
     "customEffect.GuiMixin"
   ],
   "mixins": [
+    "block.amethyst.BuddingAmethystBlockMixin",
     "dripstone.PointedDripstoneBlockMixin",
-    "dripstone.fabric.FabricDripstoneBlockMixin"
+    "dripstone.fabric.FabricDripstoneBlockMixin",
+    "item.PlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

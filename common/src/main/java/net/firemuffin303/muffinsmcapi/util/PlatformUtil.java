@@ -4,7 +4,10 @@ import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+
+import java.util.Collection;
 
 public class PlatformUtil {
 
@@ -35,6 +38,11 @@ public class PlatformUtil {
 
     @ExpectPlatform
     public static <T extends CustomPacketPayload> void registerClientPacket(CustomPacketPayload.Type<T> type, StreamCodec<? super FriendlyByteBuf,T> codec){
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isDevelopment(){
         throw new AssertionError();
     }
 

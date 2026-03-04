@@ -20,6 +20,9 @@
     "client": [
       "net.firemuffin303.muffinsmcapi.fabric.client.MuffinsmcapiFabricClient"
     ],
+    "fabric-datagen": [
+      "net.firemuffin303.muffinsmcapi.fabric.client.datagen.APIModDataGen"
+    ],
     "jei_mod_plugin": [
       "net.firemuffin303.muffinsmcapi.impl.customEffect.integrations.CommonJEIPlugin"
     ]
