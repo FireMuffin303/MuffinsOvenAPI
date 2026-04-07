@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.firemuffin303.muffinsmcapi.api.CustomEffectRegistry;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectImpl;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectRenderer;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
@@ -26,7 +25,7 @@ public class GuiMixin {
     private Minecraft minecraft;
 
     @Inject(method = "renderEffects",at = @At(value = "HEAD"))
-    public void muffins$renderSpecialEffect(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci){
+    public void muffins$renderSpecialEffect(GuiGraphics guiGraphics, CallbackInfo ci){
         Collection<CustomEffectRenderer> clist = CustomEffectRegistry.getEffects().stream().filter(customEffectRenderer -> customEffectRenderer.shouldRender(minecraft.player)).collect(Collectors.toSet());
 
         if(!clist.isEmpty() && !(this.minecraft.screen instanceof EffectRenderingInventoryScreen<?> effectRenderingInventoryScreen && effectRenderingInventoryScreen.canSeeEffects()) ){

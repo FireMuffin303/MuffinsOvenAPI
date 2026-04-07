@@ -5,17 +5,12 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
-    "camera.CameraMixin",
     "customEffect.AbstractContainerScreenAccessor",
     "customEffect.EffectRenderingInventoryScreenMixin",
     "customEffect.GuiMixin"
   ],
   "mixins": [
-    "block.amethyst.BuddingAmethystBlockMixin",
-    "dripstone.PointedDripstoneBlockMixin",
-    "dripstone.fabric.FabricDripstoneBlockMixin",
-    "item.ItemEntityMixin",
-    "item.PlayerMixin"
+    "extension.bonemeal.BonemealItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
