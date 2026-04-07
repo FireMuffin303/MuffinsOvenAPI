@@ -14,6 +14,7 @@
     "block.amethyst.BuddingAmethystBlockMixin",
     "dripstone.PointedDripstoneBlockMixin",
     "dripstone.fabric.FabricDripstoneBlockMixin",
+    "item.ItemEntityMixin",
     "item.PlayerMixin"
   ],
   "injectors": {

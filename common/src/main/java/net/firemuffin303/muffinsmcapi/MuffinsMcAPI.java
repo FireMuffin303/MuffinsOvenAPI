@@ -1,6 +1,7 @@
 package net.firemuffin303.muffinsmcapi;
 
 import net.firemuffin303.muffinsmcapi.api.dripstone.DripstoneFluidRegistry;
+import net.firemuffin303.muffinsmcapi.common.MuffinsDataComponents;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.DripstoneFluidEvent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +15,8 @@ import net.minecraft.world.level.material.Fluids;
 
 public final class MuffinsMcAPI {
     public static final String MOD_ID = "muffinsmcapi";
+    public static final String DEFAULT_CONDITIONS_KEY = "neoforge:conditions";
+
 
     public static void init() {
         //DripstoneFluidRegistry.register(Blocks.CRYING_OBSIDIAN.defaultBlockState(), Fluids.LAVA);
@@ -33,6 +36,8 @@ public final class MuffinsMcAPI {
                 }
             }
         });
+
+        MuffinsDataComponents.init();
 
     }
 

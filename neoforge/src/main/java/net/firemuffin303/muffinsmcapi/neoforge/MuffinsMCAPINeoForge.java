@@ -9,6 +9,7 @@ import net.firemuffin303.muffinsmcapi.neoforge.client.data.RaidProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
@@ -25,6 +26,8 @@ public final class MuffinsMCAPINeoForge {
         NeoForge.EVENT_BUS.addListener(MuffinsMCAPINeoForge::registerCommand);
         NeoForge.EVENT_BUS.addListener(MuffinsMCAPINeoForge::onRegisterReloadListeners);
         eventBus.addListener(MuffinsMCAPINeoForge::dataGen);
+
+
     }
 
     private static void dataGen(GatherDataEvent event){

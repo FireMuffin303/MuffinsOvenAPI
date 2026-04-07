@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "muffinsmcapi_forgedfabric",
+  "version": "${version}",
+  "name": "Muffin's Forged Fabric API",
+  "description": "",
+  "authors": [
+    "FireMuffin303"
+  ],
+  "contact": {
+    "homepage": ""
+  },
+  "license": "MIT",
+  "icon": "assets/muffinsmcapi/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.firemuffin303.muffinsmcapi_forgedfabric.ForgedFabricAPI"
+    ]
+  },
+  "mixins": [
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

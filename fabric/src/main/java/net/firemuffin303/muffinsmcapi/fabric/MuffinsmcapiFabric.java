@@ -2,6 +2,7 @@ package net.firemuffin303.muffinsmcapi.fabric;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
@@ -10,11 +11,13 @@ import net.firemuffin303.muffinsmcapi.api.CameraAPI;
 import net.firemuffin303.muffinsmcapi.api.customRaid.CustomRaidRegistry;
 import net.firemuffin303.muffinsmcapi.common.data.DripstoneDataManager;
 import net.firemuffin303.muffinsmcapi.common.data.RaidDataManager;
+import net.firemuffin303.muffinsmcapi.impl.customRaid.CustomRaidManager;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -65,6 +68,8 @@ public final class MuffinsmcapiFabric implements ModInitializer {
             }
         });
 
+        //ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new NeoforgeDataMapLoader());
+
         CommandRegistrationCallback.EVENT.register(new CommandRegistrationCallback() {
             @Override
             public void register(CommandDispatcher<CommandSourceStack> commandDispatcher, CommandBuildContext commandBuildContext, Commands.CommandSelection commandSelection) {
@@ -72,5 +77,14 @@ public final class MuffinsmcapiFabric implements ModInitializer {
                 CustomRaidRegistry.registerCommand(commandDispatcher, commandBuildContext, commandSelection);
             }
         });
+
+        ServerTickEvents.END_WORLD_TICK.register(new ServerTickEvents.EndWorldTick() {
+            @Override
+            public void onEndTick(ServerLevel world) {
+                CustomRaidManager customRaidManager = world.getDataStorage().computeIfAbsent(CustomRaidManager.factory(world),"custom_raid");
+                customRaidManager.tick();
+            }
+        });
+
     }
 }

@@ -1,7 +1,7 @@
 package net.firemuffin303.muffinsmcapi.network.customRaid;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
-import net.firemuffin303.muffinsmcapi.network.camera.CameraShakePacket;
+import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -23,7 +23,7 @@ public record CustomRaidDebugPacket(Set<BlockPos> customRaids) implements Custom
     }
 
     public static void handle(CustomRaidDebugPacket packet){
-
+        MuffinMcAPIClient.CUSTOM_RAID_DEBUG_RENDERER.setRaidCenters(packet.customRaids);
     }
 
     @Override

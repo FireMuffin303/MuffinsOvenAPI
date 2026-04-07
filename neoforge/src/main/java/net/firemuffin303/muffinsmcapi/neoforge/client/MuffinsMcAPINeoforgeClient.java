@@ -2,15 +2,11 @@ package net.firemuffin303.muffinsmcapi.neoforge.client;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
-import net.firemuffin303.muffinsmcapi.neoforge.client.data.RaidProvider;
 import net.firemuffin303.muffinsmcapi.network.camera.CameraShakePacket;
 import net.firemuffin303.muffinsmcapi.network.customRaid.CustomRaidDebugPacket;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.MainThreadPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;

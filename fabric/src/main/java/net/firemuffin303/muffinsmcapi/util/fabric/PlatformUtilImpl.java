@@ -6,9 +6,16 @@ import dev.emi.emi.platform.EmiAgnos;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
+import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
+import net.firemuffin303.muffinsmcapi.client.renderer.CustomRaidDebugRenderer;
+import net.firemuffin303.muffinsmcapi.fabric.client.MuffinsmcapiFabricClient;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class PlatformUtilImpl {
@@ -60,6 +67,10 @@ public class PlatformUtilImpl {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 
+    public static <T> DataComponentType<T> registerDataComponent(String id, DataComponentType.Builder<T> builder) {
+        DataComponentType<T> dataComponentType = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MuffinsMcAPI.MOD_ID,id),builder.build());
+        return dataComponentType;
+    }
 
 
 }

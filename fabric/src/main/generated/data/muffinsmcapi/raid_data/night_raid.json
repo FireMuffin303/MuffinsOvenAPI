@@ -14,5 +14,9 @@
       ]
     }
   ],
-  "raid_effect": "minecraft:trial_omen"
+  "raid_effect": "minecraft:trial_omen",
+  "wave_range": {
+    "max_inclusive": 8,
+    "min_inclusive": 6
+  }
 }

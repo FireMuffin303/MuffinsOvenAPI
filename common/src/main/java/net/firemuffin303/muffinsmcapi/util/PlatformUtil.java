@@ -1,13 +1,12 @@
 package net.firemuffin303.muffinsmcapi.util;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.firemuffin303.muffinsmcapi.client.renderer.CustomRaidDebugRenderer;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-
-import java.util.Collection;
 
 public class PlatformUtil {
 
@@ -68,6 +67,11 @@ public class PlatformUtil {
 
     @ExpectPlatform
     public static boolean emiAgnosIsForge(){
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T> DataComponentType<T> registerDataComponent(String id, DataComponentType.Builder<T> builder){
         throw new AssertionError();
     }
 

@@ -11,4 +11,5 @@ rootProject.name = 'muffinsmcapi'
 
 include 'common'
 include 'fabric'
+include 'fabric:forgedfabric'
 include 'neoforge'
