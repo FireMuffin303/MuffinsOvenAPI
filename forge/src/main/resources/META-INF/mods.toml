@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "muffinsmcapi"
+version = "${version}"
+displayName = "MuffinsMCAPI"
+authors = "FireMuffin303"
+description = '''
+
+'''
+#logoFile = ""
+
+[[dependencies.muffinsmcapi]]
+modId = "forge"
+mandatory = true
+type = "required"
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.muffinsmcapi]]
+modId = "minecraft"
+mandatory = true
+type = "required"
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"

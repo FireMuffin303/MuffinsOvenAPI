@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.mixin.extension.bonemeal;
+package net.firemuffin303.muffinsmcapi.fabric.mixin.extension.bonemeal;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.firemuffin303.muffinsmcapi.api.extension.DirectionalBonemeal;
