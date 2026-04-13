@@ -152,7 +152,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyConditions(Collection instance, Operation<Integer> original){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
@@ -166,7 +166,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyCollectionSize(Collection instance, Operation<Integer> original){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
@@ -180,7 +180,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyRenderBGPosition(int original){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
@@ -194,7 +194,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyRenderIconPosition(int original){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
@@ -208,7 +208,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyRenderLabelPosition(int original){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
@@ -222,7 +222,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     public int muffins$modifyTooltipPos(int value){
         boolean isRenderTop = false;
         if(ModIntegrationRegistry.isEMIInstalled()){
-            //isRenderTop = EMIIntegrations.shouldRenderTop();
+            isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
         if(this.specialEffectAmount > 0 && !isRenderTop){
