@@ -6,9 +6,14 @@
   "client": [
     "customEffect.AbstractContainerScreenAccessor",
     "customEffect.EffectRenderingInventoryScreenMixin",
-    "customEffect.GuiMixin"
+    "customEffect.GuiMixin",
+    "renderer.HangingSignEditRendererMixin",
+    "renderer.HangingSignRendererMixin",
+    "renderer.SignEditScreenMixin",
+    "renderer.SignRendererMixin"
   ],
   "mixins": [
+    "blockEntityType.BlockEntityTypeAccesor"
   ],
   "injectors": {
     "defaultRequire": 1

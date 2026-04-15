@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "muffinsmcapi",
+  "id": "muffins_ovenapi",
   "version": "${version}",
   "name": "MuffinsMCAPI",
   "description": "",

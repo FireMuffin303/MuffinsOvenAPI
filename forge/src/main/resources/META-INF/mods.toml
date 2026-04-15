@@ -3,16 +3,16 @@ loaderVersion = "[47,)"
 license = "MIT"
 
 [[mods]]
-modId = "muffinsmcapi"
+modId = "muffins_ovenapi"
 version = "${version}"
-displayName = "MuffinsMCAPI"
+displayName = "Muffins Oven API"
 authors = "FireMuffin303"
 description = '''
 
 '''
 #logoFile = ""
 
-[[dependencies.muffinsmcapi]]
+[[dependencies.muffins_ovenapi]]
 modId = "forge"
 mandatory = true
 type = "required"
@@ -20,7 +20,7 @@ versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.muffinsmcapi]]
+[[dependencies.muffins_ovenapi]]
 modId = "minecraft"
 mandatory = true
 type = "required"

@@ -3,9 +3,17 @@ package net.firemuffin303.muffinsmcapi.util.forge;
 import dev.emi.emi.config.EffectLocation;
 import dev.emi.emi.config.EmiConfig;
 import dev.emi.emi.platform.EmiAgnos;
+import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoader;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 public class PlatformUtilImpl {
     public static boolean isFabric() {
@@ -46,5 +54,13 @@ public class PlatformUtilImpl {
 
     public static boolean isEMIInstalled() {
         return ModList.get().isLoaded("emi");
+    }
+
+    public static ResourceLocation getBlock(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
+    }
+
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType) {
+        return MuffinsMCAPIForge.ENTITY_TYPE.register(id,() -> entityType.build(id));
     }
 }

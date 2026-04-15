@@ -3,7 +3,19 @@ package net.firemuffin303.muffinsmcapi.util.fabric;
 import dev.emi.emi.config.EffectLocation;
 import dev.emi.emi.config.EmiConfig;
 import dev.emi.emi.platform.EmiAgnos;
+import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.loader.api.FabricLoader;
+import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
+import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Block;
+
+import java.util.function.Supplier;
 
 public class PlatformUtilImpl {
     public static boolean isFabric(){
@@ -46,6 +58,19 @@ public class PlatformUtilImpl {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 
+    public static ResourceLocation getBlock(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
+    }
+
+    public static Registry<OvenBoatVariant> initBoatVariantRegistry() {
+        return FabricRegistryBuilder.createSimple(MuffinsMcAPI.OVEN_BOAT_VARIANT).buildAndRegister();
+    }
+
+
+    public static <T extends Entity>  Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType) {
+        EntityType<T> entityType1 = Registry.register(BuiltInRegistries.ENTITY_TYPE,MuffinsMcAPI.modid(id),entityType.build(id));
+        return () -> entityType1;
+    }
 
 
 }
