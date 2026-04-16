@@ -2,10 +2,16 @@ package net.firemuffin303.muffinsmcapi.forge.client;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
+import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
+import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.ChestRaftModel;
+import net.minecraft.client.model.RaftModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -30,7 +36,11 @@ public class MuffinsMCAPIForgeClient {
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){
-        event.registerLayerDefinition(BoatRegistry.createBoatModelName(MuffinsMcAPI.modid("oven")), BoatModel::createBodyModel);
-        event.registerLayerDefinition(BoatRegistry.createChestBoatModelName(MuffinsMcAPI.modid("oven")), ChestBoatModel::createBodyModel);
+        ModBoatVariants.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
+            ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
+            boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
+            event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ? RaftModel::createBodyModel : BoatModel::createBodyModel);
+            event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("chest_boat/"),"main"),isRaft ? ChestRaftModel::createBodyModel : ChestBoatModel::createBodyModel);
+        });
     }
 }

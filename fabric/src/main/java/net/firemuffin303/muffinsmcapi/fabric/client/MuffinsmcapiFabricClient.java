@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.api.CustomEffectRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
+import net.firemuffin303.muffinsmcapi.fabric.MuffinsmcapiFabric;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectRenderer;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
@@ -25,9 +26,16 @@ public final class MuffinsmcapiFabricClient implements ClientModInitializer {
         MuffinMcAPIClient.init();
         BoatRegistry.entityRendererRegister(EntityRendererRegistry::register);
 
-        EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createBoatModelName(MuffinsMcAPI.modid("oven")), BoatModel::createBodyModel);
-        EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createChestBoatModelName(MuffinsMcAPI.modid("oven")), ChestBoatModel::createBodyModel);
-        EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createBoatModelName(MuffinsMcAPI.modid("raft_oven")), RaftModel::createBodyModel);
-        EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createChestBoatModelName(MuffinsMcAPI.modid("raft_oven")), ChestRaftModel::createBodyModel);
+        MuffinsmcapiFabric.OVEN_BOAT_VARIANT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
+            ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
+            boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
+            EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ?  RaftModel::createBodyModel : BoatModel::createBodyModel);
+            EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("chest_boat/"),"main"),isRaft ?  ChestRaftModel::createBodyModel : ChestBoatModel::createBodyModel);
+        });
+
+        //EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createBoatModelName(MuffinsMcAPI.modid("oven")), BoatModel::createBodyModel);
+        //EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createChestBoatModelName(MuffinsMcAPI.modid("oven")), ChestBoatModel::createBodyModel);
+        //EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createBoatModelName(MuffinsMcAPI.modid("raft_oven")), RaftModel::createBodyModel);
+        //EntityModelLayerRegistry.registerModelLayer(BoatRegistry.createChestBoatModelName(MuffinsMcAPI.modid("raft_oven")), ChestRaftModel::createBodyModel);
     }
 }

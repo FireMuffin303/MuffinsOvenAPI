@@ -5,12 +5,16 @@ import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
 import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -55,5 +59,10 @@ public class BoatRegistry {
     @ExpectPlatform
     public static Set<Map.Entry<ResourceKey<OvenBoatVariant>, OvenBoatVariant>> entrySet(){
         throw new AssertionError();
+    }
+
+    @FunctionalInterface
+    public interface EntityModelLayerRegister{
+        void register(ModelLayerLocation modelLayer, Supplier<LayerDefinition> provider);
     }
 }
