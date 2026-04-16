@@ -6,6 +6,7 @@ import dev.emi.emi.platform.EmiAgnos;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
 import net.minecraft.core.Registry;
@@ -63,12 +64,12 @@ public class PlatformUtilImpl {
     }
 
     public static Registry<OvenBoatVariant> initBoatVariantRegistry() {
-        return FabricRegistryBuilder.createSimple(MuffinsMcAPI.OVEN_BOAT_VARIANT).buildAndRegister();
+        return FabricRegistryBuilder.createSimple(BoatRegistry.OVEN_BOAT_VARIANT).buildAndRegister();
     }
 
 
     public static <T extends Entity>  Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType) {
-        EntityType<T> entityType1 = Registry.register(BuiltInRegistries.ENTITY_TYPE,MuffinsMcAPI.modid(id),entityType.build(id));
+        EntityType<T> entityType1 = Registry.register(BuiltInRegistries.ENTITY_TYPE,MuffinsMcAPI.modid(id),entityType.sized(1.375F, 0.5625F).clientTrackingRange(10).build(id));
         return () -> entityType1;
     }
 

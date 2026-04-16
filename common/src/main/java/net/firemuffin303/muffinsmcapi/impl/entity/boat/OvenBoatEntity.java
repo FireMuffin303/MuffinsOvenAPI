@@ -26,6 +26,14 @@ public class OvenBoatEntity extends Boat implements IOvenBoat {
         this.zo = f;
     }
 
+    public void tick() {
+        if (this.getOvenBoatVariant().isPresent()) {
+            super.tick();
+        } else {
+            this.discard();
+        }
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -36,7 +44,7 @@ public class OvenBoatEntity extends Boat implements IOvenBoat {
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if(this.getOvenBoatVariant().isPresent()){
-            ResourceLocation resourceLocation = MuffinsMcAPI.OVEN_BOAT_VARIANT_REGISTRY.getKey(this.getOvenBoatVariant().get());
+            ResourceLocation resourceLocation = BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY.getKey(this.getOvenBoatVariant().get());
             compoundTag.putString("oven_boat_type",resourceLocation.toString());
         }
     }
@@ -48,7 +56,7 @@ public class OvenBoatEntity extends Boat implements IOvenBoat {
             this.discard();
         }
 
-        OvenBoatVariant ovenBoatVariant = MuffinsMcAPI.OVEN_BOAT_VARIANT_REGISTRY.get(new ResourceLocation(compoundTag.getString("oven_boat_type")));
+        OvenBoatVariant ovenBoatVariant = BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY.get(new ResourceLocation(compoundTag.getString("oven_boat_type")));
         this.setVariant(ovenBoatVariant);
     }
 

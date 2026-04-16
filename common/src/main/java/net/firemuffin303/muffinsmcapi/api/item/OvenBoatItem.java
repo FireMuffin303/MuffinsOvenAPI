@@ -29,10 +29,14 @@ public class OvenBoatItem extends Item {
     private final boolean hasChest;
     private final OvenBoatVariant ovenBoatVariant;
 
-    public OvenBoatItem(Properties properties,boolean hasBoat,OvenBoatVariant ovenBoatVariant) {
+    public OvenBoatItem(Properties properties,boolean hasChest,OvenBoatVariant ovenBoatVariant) {
         super(properties);
-        this.hasChest = hasBoat;
+        this.hasChest = hasChest;
         this.ovenBoatVariant = ovenBoatVariant;
+    }
+
+    public OvenBoatItem(boolean hasChest,OvenBoatVariant variant){
+        this(new Properties().stacksTo(1),hasChest,variant);
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {

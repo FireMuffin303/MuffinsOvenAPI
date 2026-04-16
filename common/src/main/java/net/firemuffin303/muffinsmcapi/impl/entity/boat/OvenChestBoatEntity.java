@@ -17,11 +17,19 @@ public class OvenChestBoatEntity extends ChestBoat implements IOvenBoat {
     }
 
     public OvenChestBoatEntity(Level level, double d, double e, double f) {
-        this(EntityType.CHEST_BOAT, level);
+        this(BoatRegistry.OVEN_CHEST_BOAT.get(), level);
         this.setPos(d, e, f);
         this.xo = d;
         this.yo = e;
         this.zo = f;
+    }
+
+    public void tick() {
+        if (this.getOvenBoatVariant().isPresent()) {
+            super.tick();
+        } else {
+            this.discard();
+        }
     }
 
     @Override

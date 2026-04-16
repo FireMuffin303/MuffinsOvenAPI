@@ -2,6 +2,7 @@ package net.firemuffin303.muffinsmcapi.util;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -75,12 +76,17 @@ public class PlatformUtil {
     }
 
     @ExpectPlatform
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType){
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType){
         throw new AssertionError();
     }
 
     @FunctionalInterface
     public interface EntitySupplier{
         void create(EntityType<? extends Boat> entityType, Level level);
+    }
+
+    @FunctionalInterface
+    public interface EntityRendererSupplier<T extends Entity>{
+        void create(EntityType<? extends Entity> entityType, EntityRendererProvider<T> entityRendererProvider);
     }
 }

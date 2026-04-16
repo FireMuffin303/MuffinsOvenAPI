@@ -8,6 +8,8 @@ import net.firemuffin303.muffinsmcapi.api.block.sign.OvenCeilingHangingSignBlock
 import net.firemuffin303.muffinsmcapi.api.block.sign.OvenStandSignBlock;
 import net.firemuffin303.muffinsmcapi.api.block.sign.OvenWallHangingSignBlock;
 import net.firemuffin303.muffinsmcapi.api.block.sign.OvenWallSignBlock;
+import net.firemuffin303.muffinsmcapi.api.item.OvenBoatItem;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,7 +29,14 @@ public final class MuffinsmcapiFabric implements ModInitializer {
     public static final Block OVEN_CEILING_HANGING_SIGN = Registry.register(BuiltInRegistries.BLOCK,MuffinsMcAPI.modid("oven_hanging_sign"),new OvenCeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN),"oven"));
     public static final Block OVEN_WALL_HANGING_SIGN = Registry.register(BuiltInRegistries.BLOCK,MuffinsMcAPI.modid("oven_wall_hanging_sign"),new OvenWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN),"oven"));
     public static final Item OVEN_HANGING_SIGN_TEST = Registry.register(BuiltInRegistries.ITEM,MuffinsMcAPI.modid("oven_hanging_sign"),new HangingSignItem(OVEN_CEILING_HANGING_SIGN,OVEN_WALL_HANGING_SIGN,new Item.Properties().stacksTo(16)));
-    public static final Registry<OvenBoatVariant> OVEN_BOAT_VARIANTS = FabricRegistryBuilder.createSimple(MuffinsMcAPI.OVEN_BOAT_VARIANT).buildAndRegister();
+
+    public static final OvenBoatVariant OVEN_BOAT = Registry.register(BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY,MuffinsMcAPI.modid("oven"),new OvenBoatVariant(false));
+    public static final OvenBoatVariant RAFT_OVEN_BOAT = Registry.register(BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY,MuffinsMcAPI.modid("raft_oven"),new OvenBoatVariant(true));
+
+    public static final Item OVEN_BOAT_ITEM = Registry.register(BuiltInRegistries.ITEM,MuffinsMcAPI.modid("oven_boat"),new OvenBoatItem(false,OVEN_BOAT));
+    public static final Item CHEST_OVEN_BOAT_ITEM = Registry.register(BuiltInRegistries.ITEM,MuffinsMcAPI.modid("chest_oven_boat"),new OvenBoatItem(true,OVEN_BOAT));
+    public static final Item OVEN_RAFT_ITEM = Registry.register(BuiltInRegistries.ITEM,MuffinsMcAPI.modid("oven_raft"),new OvenBoatItem(false,RAFT_OVEN_BOAT));
+    public static final Item CHEST_OVEN_RAFT_ITEM = Registry.register(BuiltInRegistries.ITEM,MuffinsMcAPI.modid("chest_oven_raft"),new OvenBoatItem(true,RAFT_OVEN_BOAT));
 
     @Override
     public void onInitialize() {
