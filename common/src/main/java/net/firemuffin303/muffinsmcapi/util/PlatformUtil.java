@@ -70,10 +70,7 @@ public class PlatformUtil {
         throw new AssertionError();
     }
 
-    @ExpectPlatform
-    public static Registry<OvenBoatVariant> initBoatVariantRegistry(){
-        throw new AssertionError();
-    }
+
 
     @ExpectPlatform
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType){

@@ -63,9 +63,7 @@ public class PlatformUtilImpl {
         return BuiltInRegistries.BLOCK.getKey(block);
     }
 
-    public static Registry<OvenBoatVariant> initBoatVariantRegistry() {
-        return FabricRegistryBuilder.createSimple(BoatRegistry.OVEN_BOAT_VARIANT).buildAndRegister();
-    }
+
 
 
     public static <T extends Entity>  Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType) {

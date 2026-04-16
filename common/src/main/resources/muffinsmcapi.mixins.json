@@ -7,7 +7,6 @@
     "customEffect.AbstractContainerScreenAccessor",
     "customEffect.EffectRenderingInventoryScreenMixin",
     "customEffect.GuiMixin",
-    "renderer.BoatRendererMixin",
     "renderer.HangingSignEditRendererMixin",
     "renderer.HangingSignRendererMixin",
     "renderer.SignEditScreenMixin",

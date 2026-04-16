@@ -4,6 +4,9 @@ import dev.emi.emi.config.EffectLocation;
 import dev.emi.emi.config.EmiConfig;
 import dev.emi.emi.platform.EmiAgnos;
 import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
+import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -61,6 +64,6 @@ public class PlatformUtilImpl {
     }
 
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType) {
-        return MuffinsMCAPIForge.ENTITY_TYPE.register(id,() -> entityType.build(id));
+        return ModEntityTypes.ENTITY_TYPE.register(id,() -> entityType.sized(1.375F, 0.5625F).clientTrackingRange(10).build(id));
     }
 }

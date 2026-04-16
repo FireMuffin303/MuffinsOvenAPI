@@ -6,6 +6,6 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import java.util.Optional;
 
 public class OvenBoatUtil {
-    public static final EntityDataSerializer<Optional<OvenBoatVariant>> SERIALIZER = EntityDataSerializer.optional((friendlyByteBuf, ovenBoatVariant) -> friendlyByteBuf.writeId(BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY,ovenBoatVariant), friendlyByteBuf -> friendlyByteBuf.readById(BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY));
+    public static final EntityDataSerializer<Optional<OvenBoatVariant>> SERIALIZER = EntityDataSerializer.optional((friendlyByteBuf, ovenBoatVariant) -> friendlyByteBuf.writeResourceLocation(BoatRegistry.getBoatKey(ovenBoatVariant)), friendlyByteBuf -> BoatRegistry.getBoat(friendlyByteBuf.readResourceLocation()));
 
 }

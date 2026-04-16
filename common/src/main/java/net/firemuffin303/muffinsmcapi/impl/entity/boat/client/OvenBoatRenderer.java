@@ -21,7 +21,7 @@ public class OvenBoatRenderer extends BoatRenderer {
     public OvenBoatRenderer(EntityRendererProvider.Context context, boolean bl) {
         super(context, bl);
 
-        this.boatResources = BoatRegistry.OVEN_BOAT_VARIANT_REGISTRY.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
+        this.boatResources = BoatRegistry.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
             OvenBoatVariant ovenBoatVariant = entry.getValue();
             ResourceLocation resourceLocation = entry.getKey().location();
             String id = bl ? "textures/entity/chest_boat/" + resourceLocation.getPath() + ".png" : "textures/entity/boat/" + resourceLocation.getPath() + ".png";

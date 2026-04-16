@@ -2,11 +2,7 @@ package net.firemuffin303.muffinsmcapi;
 
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
-import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
-import net.minecraft.core.Registry;
 import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
 public final class MuffinsMcAPI {

@@ -23,19 +23,20 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class OvenBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE;
     private final boolean hasChest;
-    private final OvenBoatVariant ovenBoatVariant;
+    private final Supplier<OvenBoatVariant> ovenBoatVariant;
 
-    public OvenBoatItem(Properties properties,boolean hasChest,OvenBoatVariant ovenBoatVariant) {
+    public OvenBoatItem(Properties properties,boolean hasChest,Supplier<OvenBoatVariant> ovenBoatVariant) {
         super(properties);
         this.hasChest = hasChest;
         this.ovenBoatVariant = ovenBoatVariant;
     }
 
-    public OvenBoatItem(boolean hasChest,OvenBoatVariant variant){
+    public OvenBoatItem(boolean hasChest,Supplier<OvenBoatVariant> variant){
         this(new Properties().stacksTo(1),hasChest,variant);
     }
 
@@ -61,7 +62,7 @@ public class OvenBoatItem extends Item {
 
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 Boat boat = this.getBoat(level, hitResult);
-                ((IOvenBoat)boat).setVariant(this.ovenBoatVariant);
+                ((IOvenBoat)boat).setVariant(this.ovenBoatVariant.get());
                 boat.setYRot(player.getYRot());
                 if (!level.noCollision(boat, boat.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemStack);
