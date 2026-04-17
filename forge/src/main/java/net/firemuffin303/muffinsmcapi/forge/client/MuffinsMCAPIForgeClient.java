@@ -2,10 +2,10 @@ package net.firemuffin303.muffinsmcapi.forge.client;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
-import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
+import net.firemuffin303.muffinsmcapi.forge.api.registry.ForgeOvenRegistry;
 import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
-import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.ChestRaftModel;
@@ -13,7 +13,6 @@ import net.minecraft.client.model.RaftModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -31,12 +30,12 @@ public class MuffinsMCAPIForgeClient {
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterRenderers event){
-        BoatRegistry.entityRendererRegister(event::registerEntityRenderer);
+        OvenBoatUtil.entityRendererRegister(event::registerEntityRenderer);
     }
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){
-        ModBoatVariants.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
+        ForgeOvenRegistry.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ? RaftModel::createBodyModel : BoatModel::createBodyModel);

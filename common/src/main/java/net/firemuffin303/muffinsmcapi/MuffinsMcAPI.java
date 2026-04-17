@@ -1,6 +1,6 @@
 package net.firemuffin303.muffinsmcapi;
 
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.resources.ResourceLocation;

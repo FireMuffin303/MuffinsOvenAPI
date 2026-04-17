@@ -1,9 +1,8 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat.forge;
 
-import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
-import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
+import net.firemuffin303.muffinsmcapi.forge.api.registry.ForgeOvenRegistry;
 import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
-public class BoatRegistryImpl {
+public class OvenBoatUtilImpl {
     public static final DeferredRegister<OvenBoatVariant> OVEN_BOAT_VARIANT = DeferredRegister.create(BoatRegistry.OVEN_BOAT_VARIANT,"");
 
 
@@ -22,14 +21,14 @@ public class BoatRegistryImpl {
     }
 
     public static ResourceLocation getBoatKey(OvenBoatVariant ovenBoatVariant) {
-        return ModBoatVariants.OVEN_BOAT_VARIANTS_REGISTRY.get().getKey(ovenBoatVariant);
+        return ForgeOvenRegistry.OVEN_BOAT_VARIANTS_REGISTRY.get().getKey(ovenBoatVariant);
     }
 
     public static OvenBoatVariant getBoat(ResourceLocation resourceLocation) {
-        return ModBoatVariants.OVEN_BOAT_VARIANTS_REGISTRY.get().getValue(resourceLocation);
+        return ForgeOvenRegistry.OVEN_BOAT_VARIANTS_REGISTRY.get().getValue(resourceLocation);
     }
 
     public static Set<Map.Entry<ResourceKey<OvenBoatVariant>, OvenBoatVariant>> entrySet() {
-        return ModBoatVariants.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries();
+        return ForgeOvenRegistry.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries();
     }
 }

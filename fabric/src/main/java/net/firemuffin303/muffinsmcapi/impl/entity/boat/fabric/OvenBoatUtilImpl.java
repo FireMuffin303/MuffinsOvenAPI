@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.Map;
 import java.util.Set;
 
-public class BoatRegistryImpl {
+public class OvenBoatUtilImpl {
 
     public static ResourceLocation getBoatKey(OvenBoatVariant ovenBoatVariant) {
         return MuffinsmcapiFabric.OVEN_BOAT_VARIANT_REGISTRY.getKey(ovenBoatVariant);

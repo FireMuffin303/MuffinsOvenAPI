@@ -1,5 +1,6 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat;
 
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -19,7 +20,7 @@ public class OvenChestBoatEntity extends ChestBoat implements IOvenBoat {
     }
 
     public OvenChestBoatEntity(Level level, double d, double e, double f) {
-        this(BoatRegistry.OVEN_CHEST_BOAT.get(), level);
+        this(OvenBoatUtil.OVEN_CHEST_BOAT.get(), level);
         this.setPos(d, e, f);
         this.xo = d;
         this.yo = e;
@@ -54,7 +55,7 @@ public class OvenChestBoatEntity extends ChestBoat implements IOvenBoat {
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if(this.getOvenBoatVariant().isPresent()){
-            ResourceLocation resourceLocation = BoatRegistry.getBoatKey(this.getOvenBoatVariant().get());
+            ResourceLocation resourceLocation = OvenBoatUtil.getBoatKey(this.getOvenBoatVariant().get());
             compoundTag.putString("oven_boat_type",resourceLocation.toString());
         }
     }
@@ -66,7 +67,7 @@ public class OvenChestBoatEntity extends ChestBoat implements IOvenBoat {
             this.discard();
         }
 
-        OvenBoatVariant ovenBoatVariant = BoatRegistry.getBoat(new ResourceLocation(compoundTag.getString("oven_boat_type")));
+        OvenBoatVariant ovenBoatVariant = OvenBoatUtil.getBoat(new ResourceLocation(compoundTag.getString("oven_boat_type")));
         this.setVariant(ovenBoatVariant);
     }
 }

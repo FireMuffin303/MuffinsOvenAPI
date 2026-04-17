@@ -2,8 +2,9 @@ package net.firemuffin303.muffinsmcapi.impl.entity.boat.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -21,7 +22,7 @@ public class OvenBoatRenderer extends BoatRenderer {
     public OvenBoatRenderer(EntityRendererProvider.Context context, boolean bl) {
         super(context, bl);
 
-        this.boatResources = BoatRegistry.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
+        this.boatResources = OvenBoatUtil.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
             OvenBoatVariant ovenBoatVariant = entry.getValue();
             ResourceLocation resourceLocation = entry.getKey().location();
             String id = bl ? "textures/entity/chest_boat/" + resourceLocation.getPath() + ".png" : "textures/entity/boat/" + resourceLocation.getPath() + ".png";
@@ -43,7 +44,7 @@ public class OvenBoatRenderer extends BoatRenderer {
 
 
     public ListModel<Boat> createBoatModel(EntityRendererProvider.Context context,boolean raft,boolean chest,ResourceLocation resourceLocation){
-        ModelLayerLocation modelLayerLocation = chest ? BoatRegistry.createChestBoatModelName(resourceLocation) : BoatRegistry.createBoatModelName(resourceLocation);
+        ModelLayerLocation modelLayerLocation = chest ? OvenBoatUtil.createChestBoatModelName(resourceLocation) : OvenBoatUtil.createBoatModelName(resourceLocation);
         ModelPart modelPart = context.bakeLayer(modelLayerLocation);
 
         if(raft){
