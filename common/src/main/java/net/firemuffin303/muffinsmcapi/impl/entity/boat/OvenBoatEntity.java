@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 
 import java.util.Optional;
@@ -58,6 +59,15 @@ public class OvenBoatEntity extends Boat implements IOvenBoat {
 
         OvenBoatVariant ovenBoatVariant = OvenBoatUtil.getBoat(new ResourceLocation(compoundTag.getString("oven_boat_type")));
         this.setVariant(ovenBoatVariant);
+    }
+
+    @Override
+    public Item getDropItem() {
+        if(this.getOvenBoatVariant().isPresent()){
+            return this.getOvenBoatVariant().get().boatItem().get();
+        }
+
+        return super.getDropItem();
     }
 
     @Override

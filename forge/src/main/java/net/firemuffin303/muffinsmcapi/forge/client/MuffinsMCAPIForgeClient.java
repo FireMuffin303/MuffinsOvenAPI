@@ -2,6 +2,7 @@ package net.firemuffin303.muffinsmcapi.forge.client;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
+import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPIForge;
 import net.firemuffin303.muffinsmcapi.forge.api.registry.ForgeOvenRegistry;
 import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
@@ -35,7 +36,7 @@ public class MuffinsMCAPIForgeClient {
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){
-        ForgeOvenRegistry.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
+        MuffinsOvenAPIForge.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ? RaftModel::createBodyModel : BoatModel::createBodyModel);

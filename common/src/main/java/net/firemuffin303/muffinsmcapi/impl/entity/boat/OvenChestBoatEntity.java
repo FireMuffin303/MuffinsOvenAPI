@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 
 import java.util.Optional;
@@ -25,6 +26,15 @@ public class OvenChestBoatEntity extends ChestBoat implements IOvenBoat {
         this.xo = d;
         this.yo = e;
         this.zo = f;
+    }
+
+    @Override
+    public Item getDropItem() {
+        if(this.getOvenBoatVariant().isPresent()){
+            return this.getOvenBoatVariant().get().chestBoatItem().get();
+        }
+
+        return super.getDropItem();
     }
 
     public void tick() {

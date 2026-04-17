@@ -1,13 +1,43 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
-public record OvenBoatVariant(boolean raft) {
-    public static final Codec<OvenBoatVariant> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            Codec.BOOL.fieldOf("raft").forGetter(ovenBoatVariant -> ovenBoatVariant.raft)
-    ).apply(instance,OvenBoatVariant::new));
+import java.util.function.Supplier;
 
+public record OvenBoatVariant(boolean raft, Supplier<Item> planks,Supplier<Item> boatItem,Supplier<Item> chestBoatItem) {
+
+
+
+    public static class Builder{
+        boolean raft = false;
+        Supplier<Item> planks;
+        Supplier<Item> boatItem;
+        Supplier<Item> chestBoatItem;
+
+
+        public Builder raft(){
+            this.raft = true;
+            return this;
+        }
+
+        public Builder planks(Supplier<Item> planks){
+            this.planks = planks;
+            return this;
+        }
+
+        public Builder chestBoat(Supplier<Item> item){
+            this.chestBoatItem = item;
+            return this;
+        }
+
+        public Builder boat(Supplier<Item> item){
+            this.boatItem = item;
+            return this;
+        }
+
+        public OvenBoatVariant build(){
+            return new OvenBoatVariant(this.raft,this.planks,this.boatItem,this.chestBoatItem);
+        }
+    }
 
 }

@@ -8,4 +8,5 @@ import net.minecraft.core.Registry;
 public class FabricOvenRegistry {
     public static final Registry<OvenBoatVariant> OVEN_BOAT_VARIANT_REGISTRY = FabricRegistryBuilder.createSimple(BoatRegistry.OVEN_BOAT_VARIANT).buildAndRegister();
 
+    public static void init(){}
 }

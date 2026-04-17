@@ -3,8 +3,10 @@ package net.firemuffin303.muffinsmcapi.fabric.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
 import net.firemuffin303.muffinsmcapi.fabric.MuffinsmcapiFabric;
+import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -20,7 +22,7 @@ public final class MuffinsmcapiFabricClient implements ClientModInitializer {
         MuffinMcAPIClient.init();
         OvenBoatUtil.entityRendererRegister(EntityRendererRegistry::register);
 
-        MuffinsmcapiFabric.OVEN_BOAT_VARIANT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
+        FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ?  RaftModel::createBodyModel : BoatModel::createBodyModel);

@@ -1,5 +1,8 @@
 package net.firemuffin303.muffinsmcapi.fabric.mixin.renderer;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
@@ -16,8 +19,8 @@ import java.util.Map;
 @Mixin(BoatRenderer.class)
 public abstract class BoatRendererMixin {
 
-    @Redirect(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
-    public Object muffins$redirectRendering(Map<Boat.Type, Pair<ResourceLocation, ListModel<Boat>>> instance, Object object,Boat boat){
+    @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
+    public Object muffins$redirectRendering(Map instance, Object object, Operation<Object> original, @Local(argsOnly = true) Boat boat){
         if(boat instanceof IOvenBoat ovenBoat && ((BoatRenderer)(Object)this) instanceof OvenBoatRenderer ovenBoatRenderer){
             return ovenBoatRenderer.getTextureAndModel(ovenBoat.getOvenBoatVariant().get());
         }

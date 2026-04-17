@@ -3,17 +3,12 @@ package net.firemuffin303.muffinsmcapi.util.forge;
 import dev.emi.emi.config.EffectLocation;
 import dev.emi.emi.config.EmiConfig;
 import dev.emi.emi.platform.EmiAgnos;
-import net.firemuffin303.muffinsmcapi.forge.MuffinsMCAPIForge;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoader;
-import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
