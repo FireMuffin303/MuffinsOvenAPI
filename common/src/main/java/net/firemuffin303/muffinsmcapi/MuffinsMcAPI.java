@@ -11,6 +11,7 @@ public final class MuffinsMcAPI {
     public static void init() {
         BoatRegistry.init();
         EntityDataSerializers.registerSerializer(OvenBoatUtil.SERIALIZER);
+
     }
 
     public static ResourceLocation modid(String id){

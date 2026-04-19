@@ -1,18 +1,25 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
-public record OvenBoatVariant(boolean raft, Supplier<Item> planks,Supplier<Item> boatItem,Supplier<Item> chestBoatItem) {
+public record OvenBoatVariant(boolean raft, Supplier<Block> planks, Supplier<Item> boatItem, Supplier<Item> chestBoatItem) {
 
 
 
     public static class Builder{
         boolean raft = false;
-        Supplier<Item> planks;
+        Supplier<Block> planks;
         Supplier<Item> boatItem;
         Supplier<Item> chestBoatItem;
+
+        public Builder(Supplier<Item> boatItem,Supplier<Item> chestBoatItem,Supplier<Block> planks){
+            this.boatItem = boatItem;
+            this.chestBoatItem = chestBoatItem;
+            this.planks = planks;
+        }
 
 
         public Builder raft(){
@@ -20,7 +27,7 @@ public record OvenBoatVariant(boolean raft, Supplier<Item> planks,Supplier<Item>
             return this;
         }
 
-        public Builder planks(Supplier<Item> planks){
+        public Builder planks(Supplier<Block> planks){
             this.planks = planks;
             return this;
         }

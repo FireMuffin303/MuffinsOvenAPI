@@ -70,12 +70,11 @@ public class PlatformUtil {
         throw new AssertionError();
     }
 
-
-
     @ExpectPlatform
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType){
         throw new AssertionError();
     }
+
 
     @FunctionalInterface
     public interface EntitySupplier{

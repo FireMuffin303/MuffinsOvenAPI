@@ -13,7 +13,8 @@
     "renderer.SignRendererMixin"
   ],
   "mixins": [
-    "blockEntityType.BlockEntityTypeAccesor"
+    "blockEntityType.BlockEntityTypeAccesor",
+    "boat.BoatEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
