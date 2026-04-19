@@ -3,25 +3,17 @@ package net.firemuffin303.muffinsmcapi.forge;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.api.BlockEntityTypeUtil;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
-import net.firemuffin303.muffinsmcapi.forge.api.registry.ForgeOvenRegistry;
 import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
 import net.firemuffin303.muffinsmcapi.impl.registration.ResourceRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.NewRegistryEvent;
-import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryBuilder;
+import net.minecraftforge.registries.*;
 
 import java.util.function.Supplier;
 
@@ -36,7 +28,6 @@ public class MuffinsOvenAPIForge {
         ModBoatVariants.OVEN_BOAT_VARIANT.register(eventBus);
 
         OvenRegistration.setPlatformHandler(OvenRegistration::addRegistry);
-
 
         MuffinsMcAPI.init();
 

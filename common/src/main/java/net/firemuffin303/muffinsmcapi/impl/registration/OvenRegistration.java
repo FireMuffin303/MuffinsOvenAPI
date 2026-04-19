@@ -1,5 +1,6 @@
 package net.firemuffin303.muffinsmcapi.impl.registration;
 
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayList;
@@ -20,9 +21,10 @@ public class OvenRegistration {
         PLATFORM_HANDLER = handler;
     }
 
+    @ExpectPlatform
     @ApiStatus.Internal
     public static RegistryPlatformHandler getPlatformHandler() {
-        return PLATFORM_HANDLER;
+        throw new AssertionError();
     }
 
     @FunctionalInterface

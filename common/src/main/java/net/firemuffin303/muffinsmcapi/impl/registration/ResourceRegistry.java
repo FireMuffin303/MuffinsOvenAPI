@@ -1,10 +1,8 @@
 package net.firemuffin303.muffinsmcapi.impl.registration;
 
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,7 @@ public class ResourceRegistry<T> {
     }
 
     public static <T> ResourceRegistry<T> create(ResourceKey<Registry<T>> resourceKey, String modId){
+
         return new ResourceRegistry<>(resourceKey,modId);
     }
 
@@ -45,13 +44,5 @@ public class ResourceRegistry<T> {
 
     public void init() {
         OvenRegistration.getPlatformHandler().register(this);
-    }
-
-
-
-    @ApiStatus.Internal
-    @SuppressWarnings("unchecked")
-    public  <T> Registry<T> resolveRegistry() {
-        return (Registry<T>) BuiltInRegistries.REGISTRY.get(this.resource.location());
     }
 }
