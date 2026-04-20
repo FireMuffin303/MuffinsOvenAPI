@@ -73,3 +73,12 @@ fabricApi {
         client = true
     }
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.FireMuffin303'
+            artifactId = 'fabric'
+        }
+    }
+}

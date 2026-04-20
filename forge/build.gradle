@@ -73,3 +73,12 @@ components.java {
         skip()
     }
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.FireMuffin303'
+            artifactId = 'forge'
+        }
+    }
+}

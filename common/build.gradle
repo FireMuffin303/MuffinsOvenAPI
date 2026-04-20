@@ -17,3 +17,13 @@ dependencies {
 
 
 }
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.FireMuffin303'
+            artifactId = 'common'
+        }
+    }
+}
