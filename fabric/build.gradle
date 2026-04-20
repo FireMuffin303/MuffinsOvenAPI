@@ -34,14 +34,17 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
 
+    /*
     if(project.recipe_overlay == "jei"){
         modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${project.jei_version}")
     }else if(project.recipe_overlay =="emi"){
         modImplementation("dev.emi:emi-fabric:${project.emi_version}")
     }
 
+     */
 
-    modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    //modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
