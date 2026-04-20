@@ -2,16 +2,17 @@
   "schemaVersion": 1,
   "id": "muffins_ovenapi",
   "version": "${version}",
-  "name": "MuffinsMCAPI",
-  "description": "",
+  "name": "Muffin's Oven API",
+  "description": "A library mod for FireMuffin303's Mods.",
   "authors": [
     "FireMuffin303"
   ],
   "contact": {
-    "homepage": ""
+    "homepage": "https://github.com/FireMuffin303/MuffinsOvenAPI",
+    "issues": "https://github.com/FireMuffin303/MuffinsOvenAPI/issues"
   },
-  "license": "MIT",
-  "icon": "assets/muffinsmcapi/icon.png",
+  "license": "GPL-3.0",
+  "icon": "assets/muffins_ovenapi/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [

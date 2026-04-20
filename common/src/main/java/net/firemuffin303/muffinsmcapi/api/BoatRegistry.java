@@ -4,10 +4,6 @@ import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class BoatRegistry {
     /*Boat Registration is modified from Terraform Wood API.*/
