@@ -1,5 +1,5 @@
 plugins {
-    id 'com.gradleup.shadow'
+    id 'com.github.johnrengelman.shadow'
 }
 
 architectury {
@@ -34,7 +34,6 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
 
-
     if(project.recipe_overlay == "jei"){
         modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${project.jei_version}")
     }else if(project.recipe_overlay =="emi"){
@@ -42,7 +41,7 @@ dependencies {
     }
 
 
-    //modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
@@ -67,19 +66,4 @@ shadowJar {
 
 remapJar {
     input.set shadowJar.archiveFile
-}
-
-fabricApi {
-    configureDataGeneration() {
-        client = true
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId = 'com.github.FireMuffin303'
-            artifactId = 'fabric'
-        }
-    }
 }

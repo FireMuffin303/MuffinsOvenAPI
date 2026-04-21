@@ -1,5 +1,6 @@
 plugins {
-    id "com.gradleup.shadow"
+    id "com.github.johnrengelman.shadow"
+    id 'maven-publish'
 }
 
 architectury {
@@ -74,11 +75,3 @@ components.java {
     }
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId = 'com.github.FireMuffin303'
-            artifactId = 'forge'
-        }
-    }
-}

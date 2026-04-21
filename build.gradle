@@ -1,7 +1,7 @@
 plugins {
-    id 'dev.architectury.loom' version '1.13-SNAPSHOT' apply false
+    id 'dev.architectury.loom' version '1.7-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
-    id 'com.gradleup.shadow' version '8.3.6' apply false
+    id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
 }
 
 architectury {
@@ -19,7 +19,6 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
         archivesName = "$rootProject.archives_name-$project.name"
     }
 
@@ -71,12 +70,26 @@ subprojects {
         }
     }
 
-    // Configure Maven publishing.
+    /*
     publishing {
+        repositories{
+            maven {
+                name = "firemuffin303RepositorySnapshots"
+                allowInsecureProtocol = true
+                credentials{
+                    username = findProperty("reposilite_user") ?: ""
+                    password = findProperty("reposilite_token") ?: ""
+                }
+            }
+        }
+
         publications {
-            mavenJava(MavenPublication) {
+            maven(MavenPublication) {
+                artifactId = "muffins_ovenapi-${project.name}"
                 from components.java
             }
         }
     }
+
+     */
 }
