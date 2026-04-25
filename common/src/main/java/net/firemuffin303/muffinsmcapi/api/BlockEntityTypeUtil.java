@@ -1,6 +1,5 @@
 package net.firemuffin303.muffinsmcapi.api;
 
-import net.firemuffin303.muffinsmcapi.mixin.blockEntityType.BlockEntityTypeAccesor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.ApiStatus;
@@ -19,13 +18,12 @@ public class BlockEntityTypeUtil {
     }
 
     @ApiStatus.Internal
-    public static void implementBlockEntityType(){
-        for(Map.Entry<BlockEntityType<?>,List<Block>> entry : BLOCK_TYPE_MAP.entrySet()){
-            BlockEntityTypeAccesor blockEntityTypeAccesor = ((BlockEntityTypeAccesor)entry.getKey());
-            Set<Block> blockSet = new HashSet<>();
-            blockSet.addAll(blockEntityTypeAccesor.getValidBlocks());
-            blockSet.addAll(entry.getValue());
-            blockEntityTypeAccesor.setValidBlocks(blockSet);
+    public static boolean isBlockValid(BlockEntityType<?> blockEntityType,Block block) {
+        if(BLOCK_TYPE_MAP.containsKey(blockEntityType)){
+            List<Block> list = BLOCK_TYPE_MAP.get(blockEntityType);
+            return list.contains(block);
         }
+        return false;
     }
+
 }

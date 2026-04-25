@@ -1,7 +1,6 @@
 package net.firemuffin303.muffinsmcapi.forge;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
-import net.firemuffin303.muffinsmcapi.api.BlockEntityTypeUtil;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
@@ -26,7 +25,6 @@ public class MuffinsOvenAPIForge {
     public MuffinsOvenAPIForge(){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBoatVariants.OVEN_BOAT_VARIANT.register(eventBus);
-
         OvenRegistration.setPlatformHandler(OvenRegistration::addRegistry);
 
         MuffinsMcAPI.init();
@@ -37,7 +35,6 @@ public class MuffinsOvenAPIForge {
 
     @SubscribeEvent
     public static void registerPostInit(FMLCommonSetupEvent event){
-        event.enqueueWork(BlockEntityTypeUtil::implementBlockEntityType);
     }
 
     @SubscribeEvent

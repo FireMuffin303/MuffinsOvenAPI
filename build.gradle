@@ -70,7 +70,6 @@ subprojects {
         }
     }
 
-    /*
     publishing {
         repositories{
             maven {
@@ -90,6 +89,4 @@ subprojects {
             }
         }
     }
-
-     */
 }
