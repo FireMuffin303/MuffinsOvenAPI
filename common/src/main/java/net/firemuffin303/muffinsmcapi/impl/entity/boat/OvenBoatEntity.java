@@ -1,6 +1,5 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat;
 
-import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;

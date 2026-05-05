@@ -61,4 +61,8 @@ public class PlatformUtilImpl {
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType) {
         return ModEntityTypes.ENTITY_TYPE.register(id,() -> entityType.sized(1.375F, 0.5625F).clientTrackingRange(10).build(id));
     }
+
+    public static boolean isModInstalled(String id) {
+        return ModList.get().isLoaded(id);
+    }
 }

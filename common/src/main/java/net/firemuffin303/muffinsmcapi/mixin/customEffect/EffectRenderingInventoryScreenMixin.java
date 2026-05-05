@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.firemuffin303.muffinsmcapi.api.CustomEffectRegistry;
-import net.firemuffin303.muffinsmcapi.api.ModIntegrationRegistry;
+import net.firemuffin303.muffinsmcapi.api.ModIntegrationHelper;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectImpl;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.CustomEffectRenderer;
 import net.firemuffin303.muffinsmcapi.impl.customEffect.integrations.CommonJEIPlugin;
@@ -44,13 +44,13 @@ public abstract class EffectRenderingInventoryScreenMixin {
         boolean wide = screenWidth >= 120;
         boolean shouldRenderTop = false;
 
-        if(ModIntegrationRegistry.isJEIInstalled()){
+        if(ModIntegrationHelper.isJEIInstalled()){
             wide = CommonJEIPlugin.checkOverlay(wide);
         }
 
         Collection<CustomEffectRenderer> clist = CustomEffectRegistry.getEffects().stream().filter(customEffectRenderer -> customEffectRenderer.shouldRender(localPlayer)).collect(Collectors.toSet());
 
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             clist = EMIEffectIntegration.shouldHidden(clist);
             wide = EMIEffectIntegration.checkCompressed(wide);
             shouldRenderTop = EMIEffectIntegration.shouldRenderTop();
@@ -71,7 +71,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
             yPos -= 61;
             xPos = ((AbstractContainerScreenAccessor)screen).getLeftPos() + (((AbstractContainerScreenAccessor)screen).getImageWidth() - width) / 2;
 
-            if(ModIntegrationRegistry.isEMIInstalled()){
+            if(ModIntegrationHelper.isEMIInstalled()){
                 yPos = EMIEffectIntegration.yAdjusting(yPos,screen);
             }
 
@@ -151,7 +151,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @WrapOperation(method = "renderEffects",at = @At(value = "INVOKE", target = "Ljava/util/Collection;size()I",ordinal = 0))
     public int muffins$modifyConditions(Collection instance, Operation<Integer> original){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
@@ -165,7 +165,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @WrapOperation(method = "renderEffects",at = @At(value = "INVOKE", target = "Ljava/util/Collection;size()I",ordinal = 1))
     public int muffins$modifyCollectionSize(Collection instance, Operation<Integer> original){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
@@ -179,7 +179,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @ModifyExpressionValue(method = "renderBackgrounds",at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"))
     public int muffins$modifyRenderBGPosition(int original){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
@@ -193,7 +193,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @ModifyExpressionValue(method = "renderIcons",at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"))
     public int muffins$modifyRenderIconPosition(int original){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
@@ -207,7 +207,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @ModifyExpressionValue(method = "renderLabels",at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"))
     public int muffins$modifyRenderLabelPosition(int original){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 
@@ -221,7 +221,7 @@ public abstract class EffectRenderingInventoryScreenMixin {
     @ModifyExpressionValue(method = "renderEffects", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"))
     public int muffins$modifyTooltipPos(int value){
         boolean isRenderTop = false;
-        if(ModIntegrationRegistry.isEMIInstalled()){
+        if(ModIntegrationHelper.isEMIInstalled()){
             isRenderTop = EMIEffectIntegration.shouldRenderTop();
         }
 

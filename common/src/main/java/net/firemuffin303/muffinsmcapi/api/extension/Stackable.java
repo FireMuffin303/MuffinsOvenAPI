@@ -13,6 +13,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 
+/**
+ * Block Interface allow player to stack onto a block and take item from a block.
+ * **/
 public interface Stackable {
 
     IntegerProperty getStackProperty();

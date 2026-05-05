@@ -67,5 +67,9 @@ public class PlatformUtilImpl {
         return () -> entityType1;
     }
 
+    public static boolean isModInstalled(String modId) {
+        return FabricLoader.getInstance().isModLoaded(modId);
+    }
+
 
 }

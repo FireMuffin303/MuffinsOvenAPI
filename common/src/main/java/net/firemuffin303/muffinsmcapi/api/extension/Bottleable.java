@@ -14,6 +14,9 @@ import net.minecraft.world.level.Level;
 
 import java.util.Optional;
 
+/**
+ * Item interface allow player to interact entity with empty bottle, similar to {@link net.minecraft.world.entity.animal.Bucketable}.
+ * **/
 public interface Bottleable {
     boolean isFromBottle();
 

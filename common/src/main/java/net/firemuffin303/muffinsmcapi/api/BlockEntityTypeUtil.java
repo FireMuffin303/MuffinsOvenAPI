@@ -6,9 +6,16 @@ import org.jetbrains.annotations.ApiStatus;
 
 import java.util.*;
 
+/**
+ * A helper class that allow adding new blocks to existed {@link BlockEntityType}.
+ * **/
 public class BlockEntityTypeUtil {
     private static final Map<BlockEntityType<?>,List<Block>> BLOCK_TYPE_MAP = new HashMap<>();
 
+    /**
+     * Add new blocks to a {@link BlockEntityType}.
+     * @param blocks array of blocks that adding to blockEntityType.
+     * **/
     public static void addBlockEntityType(BlockEntityType<?> blockEntityType, Block... blocks){
         if(BLOCK_TYPE_MAP.containsKey(blockEntityType)){
             BLOCK_TYPE_MAP.get(blockEntityType).addAll(Arrays.asList(blocks));

@@ -9,6 +9,9 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * Block Interface provide bonemeal interaction with direction.
+ * **/
 public interface DirectionalBonemeal extends BonemealableBlock {
 
     boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState,Direction direction, boolean isClient);

@@ -1,13 +1,12 @@
 package net.firemuffin303.muffinsmcapi.client;
 
 import net.firemuffin303.muffinsmcapi.api.CustomEffectRegistry;
-import net.firemuffin303.muffinsmcapi.api.ModIntegrationRegistry;
-import net.firemuffin303.muffinsmcapi.util.PlatformUtil;
+import net.firemuffin303.muffinsmcapi.api.ModIntegrationHelper;
 
 public class MuffinMcAPIClient {
     public static void init(){
-        ModIntegrationRegistry.register("jei", PlatformUtil.isJEIInstalled());
-        ModIntegrationRegistry.register("emi", PlatformUtil.isEMIInstalled());
+        ModIntegrationHelper.register("jei");
+        ModIntegrationHelper.register("emi");
 
         CustomEffectRegistry.init();
     }

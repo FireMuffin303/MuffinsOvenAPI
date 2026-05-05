@@ -26,6 +26,11 @@ public class PlatformUtil {
     }
 
     @ExpectPlatform
+    public static boolean isModInstalled(String id){
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
     public static boolean isJEIInstalled(){
         throw new AssertionError();
     }

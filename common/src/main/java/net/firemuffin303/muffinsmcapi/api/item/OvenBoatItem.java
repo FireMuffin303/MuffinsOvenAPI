@@ -1,9 +1,6 @@
 package net.firemuffin303.muffinsmcapi.api.item;
 
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatEntity;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenChestBoatEntity;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.*;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -15,16 +12,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+//TODO : apply dispenser behavior.
 public class OvenBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE;
     private final boolean hasChest;
@@ -34,6 +32,7 @@ public class OvenBoatItem extends Item {
         super(properties);
         this.hasChest = hasChest;
         this.ovenBoatVariant = ovenBoatVariant;
+        DispenserBlock.registerBehavior(this,new OvenBoatItemDispenseBehavior(this.ovenBoatVariant,this.hasChest));
     }
 
     public OvenBoatItem(boolean hasChest,Supplier<OvenBoatVariant> variant){

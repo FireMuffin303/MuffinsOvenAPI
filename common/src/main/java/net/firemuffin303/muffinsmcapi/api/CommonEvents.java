@@ -9,6 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class CommonEvents {
 
+    /**
+     * Duplicate of CropBlock getGrowthSpeed.
+     * **/
+
+
     //Duplicate Method because of Lithium for some reason?????
     public static float getGrowthSpeed(Block block, BlockGetter blockGetter, BlockPos blockPos) {
         float f = 1.0F;
