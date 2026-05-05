@@ -74,7 +74,7 @@ subprojects {
         repositories{
             maven {
                 name = "firemuffin303RepositorySnapshots"
-                allowInsecureProtocol = true
+                url = "https://maven.firemuffin303.com/snapshots/"
                 credentials{
                     username = findProperty("reposilite_user") ?: ""
                     password = findProperty("reposilite_token") ?: ""
