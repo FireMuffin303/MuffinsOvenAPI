@@ -17,8 +17,8 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class OvenBoatUtil {
-    public static final Supplier<EntityType<OvenBoatEntity>> OVEN_BOAT = PlatformUtil.registerEntityType("oven_boat", EntityType.Builder.of(OvenBoatEntity::new, MobCategory.MISC));
-    public static final Supplier<EntityType<OvenChestBoatEntity>> OVEN_CHEST_BOAT = PlatformUtil.registerEntityType("oven_chest_boat",EntityType.Builder.of(OvenChestBoatEntity::new,MobCategory.MISC));
+    //public static final Supplier<EntityType<OvenBoatEntity>> OVEN_BOAT = PlatformUtil.registerEntityType("oven_boat", EntityType.Builder.of(OvenBoatEntity::new, MobCategory.MISC));
+    //public static final Supplier<EntityType<OvenChestBoatEntity>> OVEN_CHEST_BOAT = PlatformUtil.registerEntityType("oven_chest_boat",EntityType.Builder.of(OvenChestBoatEntity::new,MobCategory.MISC));
 
     public static final EntityDataSerializer<Optional<OvenBoatVariant>> SERIALIZER = EntityDataSerializer.optional((friendlyByteBuf, ovenBoatVariant) -> friendlyByteBuf.writeResourceLocation(OvenBoatUtil.getBoatKey(ovenBoatVariant)), friendlyByteBuf -> OvenBoatUtil.getBoat(friendlyByteBuf.readResourceLocation()));
 
@@ -32,8 +32,8 @@ public class OvenBoatUtil {
 
     @SuppressWarnings("unchecked")
     public static void entityRendererRegister(PlatformUtil.EntityRendererSupplier entityRendererSupplier){
-        entityRendererSupplier.create(OvenBoatUtil.OVEN_BOAT.get(), context -> new OvenBoatRenderer(context,false));
-        entityRendererSupplier.create(OvenBoatUtil.OVEN_CHEST_BOAT.get(),context -> new OvenBoatRenderer(context,true));
+        //entityRendererSupplier.create(OvenBoatUtil.OVEN_BOAT.get(), context -> new OvenBoatRenderer(context,false));
+        //entityRendererSupplier.create(OvenBoatUtil.OVEN_CHEST_BOAT.get(),context -> new OvenBoatRenderer(context,true));
     }
 
     @ExpectPlatform

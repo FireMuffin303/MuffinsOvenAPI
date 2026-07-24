@@ -8,6 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
@@ -84,7 +85,7 @@ public class OvenBoatItem extends Item {
     }
 
     private Boat getBoat(Level level, HitResult hitResult) {
-        return (Boat)(this.hasChest ? new OvenChestBoatEntity(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : new OvenBoatEntity(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z));
+        return (Boat)(this.hasChest ? new ChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : new Boat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z));
     }
 
     static {

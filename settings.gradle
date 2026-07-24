@@ -12,3 +12,7 @@ rootProject.name = 'muffinsmcapi'
 include 'common'
 include 'fabric'
 include 'forge'
+
+include 'example-common'
+include 'example-fabric'
+include 'example-forge'

@@ -35,7 +35,7 @@ dependencies {
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.3"))
     implementation(include("io.github.llamalad7:mixinextras-forge:0.5.3"))
 
-    compileOnly("dev.emi:emi-forge:${project.emi_version}")
+    //compileOnly("dev.emi:emi-forge:${project.emi_version}")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

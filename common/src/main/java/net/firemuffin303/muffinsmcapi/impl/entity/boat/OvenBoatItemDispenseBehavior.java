@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -31,7 +32,7 @@ public class OvenBoatItemDispenseBehavior extends DefaultDispenseItemBehavior {
     public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
         Direction direction = (Direction)blockSource.getBlockState().getValue(DispenserBlock.FACING);
         Level level = blockSource.getLevel();
-        double d = 0.5625 + (double) OvenBoatUtil.OVEN_BOAT.get().getWidth() / 2.0;
+        double d = 0.5625 + (double) EntityType.PIG.getWidth() / 2.0;
         double e = blockSource.x() + (double)direction.getStepX() * d;
         double f = blockSource.y() + (double)((float)direction.getStepY() * 1.125F);
         double g = blockSource.z() + (double)direction.getStepZ() * d;

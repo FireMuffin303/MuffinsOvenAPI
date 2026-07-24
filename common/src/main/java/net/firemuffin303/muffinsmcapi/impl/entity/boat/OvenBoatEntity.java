@@ -19,7 +19,8 @@ public class OvenBoatEntity extends Boat implements IOvenBoat {
     }
 
     public OvenBoatEntity(Level level, double d, double e, double f) {
-        this(OvenBoatUtil.OVEN_BOAT.get(), level);
+        //this(OvenBoatUtil.OVEN_BOAT.get(), level);
+        this(EntityType.BOAT, level);
         this.setPos(d, e, f);
         this.xo = d;
         this.yo = e;

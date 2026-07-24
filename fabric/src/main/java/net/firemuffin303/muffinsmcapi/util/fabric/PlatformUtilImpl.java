@@ -1,10 +1,10 @@
 package net.firemuffin303.muffinsmcapi.util.fabric;
 
-import dev.emi.emi.config.EffectLocation;
-import dev.emi.emi.config.EmiConfig;
-import dev.emi.emi.platform.EmiAgnos;
 import net.fabricmc.loader.api.FabricLoader;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
+import net.firemuffin303.muffinsmcapi.fabric.MuffinsmcapiFabric;
+import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +31,7 @@ public class PlatformUtilImpl {
         return FabricLoader.getInstance().isModLoaded("emi");
     }
 
+    /*
     public static boolean emiEffectLocationHidden() {
         return EmiConfig.effectLocation == EffectLocation.HIDDEN;
     }
@@ -50,6 +51,7 @@ public class PlatformUtilImpl {
     public static boolean emiAgnosIsForge() {
         return EmiAgnos.isForge();
     }
+    */
 
     public static boolean isDevelopment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
@@ -70,6 +72,8 @@ public class PlatformUtilImpl {
     public static boolean isModInstalled(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
     }
+
+
 
 
 }

@@ -19,6 +19,5 @@ public final class MuffinsmcapiFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         MuffinsMcAPI.init();
-
     }
 }

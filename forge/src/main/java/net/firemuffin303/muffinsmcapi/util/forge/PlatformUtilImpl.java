@@ -1,8 +1,5 @@
 package net.firemuffin303.muffinsmcapi.util.forge;
 
-import dev.emi.emi.config.EffectLocation;
-import dev.emi.emi.config.EmiConfig;
-import dev.emi.emi.platform.EmiAgnos;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -30,6 +27,7 @@ public class PlatformUtilImpl {
         return false;
     }
 
+    /*
     public static boolean emiEffectLocationHidden() {
         return EmiConfig.effectLocation == EffectLocation.HIDDEN;
     }
@@ -49,6 +47,7 @@ public class PlatformUtilImpl {
     public static boolean emiAgnosIsForge() {
         return EmiAgnos.isForge();
     }
+    */
 
     public static boolean isEMIInstalled() {
         return ModList.get().isLoaded("emi");

@@ -16,12 +16,10 @@ import net.minecraft.world.entity.vehicle.Boat;
 
 import java.util.Map;
 
-public class OvenBoatRenderer extends BoatRenderer {
+public class OvenBoatRenderer {
     private final Map<OvenBoatVariant, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
 
     public OvenBoatRenderer(EntityRendererProvider.Context context, boolean bl) {
-        super(context, bl);
-
         this.boatResources = OvenBoatUtil.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
             OvenBoatVariant ovenBoatVariant = entry.getValue();
             ResourceLocation resourceLocation = entry.getKey().location();
@@ -30,16 +28,17 @@ public class OvenBoatRenderer extends BoatRenderer {
         }));
     }
 
-    public ResourceLocation getTextureLocation(Boat entity) {
-        if (entity instanceof IOvenBoat ovenBoat) {
-            return (ResourceLocation)((Pair)this.boatResources.get(ovenBoat.getOvenBoatVariant().get())).getFirst();
-        } else {
-            return super.getTextureLocation(entity);
-        }
+    public ResourceLocation getTextureLocation(IOvenBoat entity) {
+        return (ResourceLocation)((Pair)this.boatResources.get(entity.getOvenBoatVariant().get())).getFirst();
     }
 
     public Pair<ResourceLocation, ListModel<Boat>> getTextureAndModel(OvenBoatVariant variant) {
         return this.boatResources.get(variant);
+    }
+
+    //TODO: check if boat variant registered
+    public boolean hasBoatVariantData(){
+        return false;
     }
 
 

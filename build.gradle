@@ -42,9 +42,10 @@ subprojects {
             url = "https://api.modrinth.com/maven"
         }
 
+
         maven {
             name = "TerraformersMC"
-            url = "https://maven.terraformersmc.com/"
+            url = "https://maven.terraformersmc.com/repository/maven-public/"
         }
 
         maven { url = "https://mvn.devos.one/releases/" }
