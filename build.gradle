@@ -45,7 +45,7 @@ subprojects {
 
         maven {
             name = "TerraformersMC"
-            url = "https://maven.terraformersmc.com/repository/maven-public/"
+            url = "https://maven.gnomecraft.net/repository/maven-public/"
         }
 
         maven { url = "https://mvn.devos.one/releases/" }
