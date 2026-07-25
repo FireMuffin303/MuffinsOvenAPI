@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-//TODO : apply dispenser behavior.
 public class OvenBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE;
     private final boolean hasChest;

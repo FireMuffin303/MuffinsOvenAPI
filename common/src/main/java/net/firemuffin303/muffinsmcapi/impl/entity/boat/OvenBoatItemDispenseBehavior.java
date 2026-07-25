@@ -5,9 +5,9 @@ import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -30,28 +30,28 @@ public class OvenBoatItemDispenseBehavior extends DefaultDispenseItemBehavior {
     }
 
     public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
-        Direction direction = (Direction)blockSource.getBlockState().getValue(DispenserBlock.FACING);
+        Direction direction = blockSource.getBlockState().getValue(DispenserBlock.FACING);
         Level level = blockSource.getLevel();
-        double d = 0.5625 + (double) EntityType.PIG.getWidth() / 2.0;
+        double d = 0.5625 + (double) EntityType.BOAT.getWidth() / 2.0;
         double e = blockSource.x() + (double)direction.getStepX() * d;
         double f = blockSource.y() + (double)((float)direction.getStepY() * 1.125F);
         double g = blockSource.z() + (double)direction.getStepZ() * d;
         BlockPos blockPos = blockSource.getPos().relative(direction);
         double h;
-        if (((Level)level).getFluidState(blockPos).is(FluidTags.WATER)) {
+        if (level.getFluidState(blockPos).is(FluidTags.WATER)) {
             h = 1.0;
         } else {
-            if (!((Level)level).getBlockState(blockPos).isAir() || !((Level)level).getFluidState(blockPos.below()).is(FluidTags.WATER)) {
+            if (!level.getBlockState(blockPos).isAir() || !level.getFluidState(blockPos.below()).is(FluidTags.WATER)) {
                 return this.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
             }
 
             h = 0.0;
         }
 
-        Boat boat = this.isChestBoat ? new OvenChestBoatEntity(level, e, f + h, g) : new OvenBoatEntity(level, e, f + h, g);
+        Boat boat = this.isChestBoat ? new ChestBoat(level, e, f + h, g) : new Boat(level, e, f + h, g);
         ((IOvenBoat)boat).setVariant(this.ovenBoatVariant.get());
-        ((Boat)boat).setYRot(direction.toYRot());
-        ((Level)level).addFreshEntity((Entity)boat);
+        boat.setYRot(direction.toYRot());
+        level.addFreshEntity(boat);
         itemStack.shrink(1);
         return itemStack;
     }

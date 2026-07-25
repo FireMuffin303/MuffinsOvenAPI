@@ -14,7 +14,8 @@
   ],
   "mixins": [
     "blockEntityType.BlockEntityTypeMixin",
-    "boat.BoatEntityMixin"
+    "boat.BoatEntityMixin",
+    "boat.ChestBoatEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

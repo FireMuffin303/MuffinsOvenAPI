@@ -22,4 +22,8 @@ public class OvenBoatUtilImpl {
     public static Set<Map.Entry<ResourceKey<OvenBoatVariant>, OvenBoatVariant>> entrySet() {
         return FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY.entrySet();
     }
+
+    public static boolean hasBoat(ResourceLocation resourceLocation) {
+        return FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY.containsKey(resourceLocation);
+    }
 }

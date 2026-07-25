@@ -1,6 +1,7 @@
 package net.firemuffin303.muffinsmcapi.mixin.boat;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
@@ -12,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
@@ -51,13 +53,20 @@ public abstract class BoatEntityMixin extends Entity implements IOvenBoat {
 
     @ModifyExpressionValue(method = "checkFallDamage",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/vehicle/Boat$Type;getPlanks()Lnet/minecraft/world/level/block/Block;"))
     public Block muffins$getPlanks(Block original){
-        /*
-        if(this instanceof IOvenBoat iOvenBoat && iOvenBoat.getOvenBoatVariant().isPresent()){
-            return iOvenBoat.getOvenBoatVariant().get().planks().get();
+        if(this.getOvenBoatVariant().isPresent()){
+            return this.getOvenBoatVariant().get().planks().get();
         }
-        */
 
 
+        return original;
+    }
+
+    @ModifyReturnValue(method = "getDropItem",at = @At("RETURN"))
+    public Item muffins$getDropItem(Item original){
+        OvenBoatVariant ovenBoatVariant = this.getOvenBoatVariant().orElse(null);
+        if(ovenBoatVariant != null){
+            return ovenBoatVariant.boatItem().get();
+        }
         return original;
     }
 
@@ -74,5 +83,10 @@ public abstract class BoatEntityMixin extends Entity implements IOvenBoat {
         }
 
         return Optional.of(ovenBoatVariant);
+    }
+
+    @Override
+    public String getBoatVariantString() {
+        return this.entityData.get(DATA_CUSTOM_TYPE);
     }
 }

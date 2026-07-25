@@ -10,4 +10,5 @@ public interface IOvenBoat {
 
     Optional<OvenBoatVariant> getOvenBoatVariant();
 
+    String getBoatVariantString();
 }

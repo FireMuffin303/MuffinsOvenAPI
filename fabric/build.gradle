@@ -41,7 +41,7 @@ dependencies {
     }
 
 
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    //modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }

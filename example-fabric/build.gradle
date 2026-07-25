@@ -31,9 +31,9 @@ dependencies {
         modImplementation("dev.emi:emi-fabric:${project.emi_version}")
     }
 
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    //modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-    modImplementation project(path: ":fabric", configuration: "namedElements")
+    implementation project(path: ":fabric", configuration: "namedElements")
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     common(project(path: ":example-common", configuration: "namedElements")) { transitive false }
 

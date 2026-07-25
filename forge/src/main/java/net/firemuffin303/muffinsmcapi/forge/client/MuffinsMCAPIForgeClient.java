@@ -29,10 +29,6 @@ public class MuffinsMCAPIForgeClient {
         event.enqueueWork(MuffinMcAPIClient::init);
     }
 
-    @SubscribeEvent
-    public static void registerEntityRender(EntityRenderersEvent.RegisterRenderers event){
-        OvenBoatUtil.entityRendererRegister(event::registerEntityRenderer);
-    }
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){

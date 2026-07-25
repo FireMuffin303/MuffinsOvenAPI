@@ -80,12 +80,6 @@ public class PlatformUtil {
         throw new AssertionError();
     }
 
-
-    @FunctionalInterface
-    public interface EntitySupplier{
-        void create(EntityType<? extends Boat> entityType, Level level);
-    }
-
     @FunctionalInterface
     public interface EntityRendererSupplier<T extends Entity>{
         void create(EntityType<? extends Entity> entityType, EntityRendererProvider<T> entityRendererProvider);

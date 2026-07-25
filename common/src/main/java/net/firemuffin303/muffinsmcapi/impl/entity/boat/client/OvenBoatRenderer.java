@@ -2,14 +2,12 @@ package net.firemuffin303.muffinsmcapi.impl.entity.boat.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
-import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -36,9 +34,8 @@ public class OvenBoatRenderer {
         return this.boatResources.get(variant);
     }
 
-    //TODO: check if boat variant registered
-    public boolean hasBoatVariantData(){
-        return false;
+    public boolean hasBoatVariantData(ResourceLocation resourceLocation){
+        return OvenBoatUtil.hasBoat(resourceLocation);
     }
 
 

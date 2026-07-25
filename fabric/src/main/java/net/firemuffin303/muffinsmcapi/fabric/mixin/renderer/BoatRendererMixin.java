@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.logging.LogUtils;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
+import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -20,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
 
-@Debug(export = true)
 @Mixin(BoatRenderer.class)
 public abstract class BoatRendererMixin {
     @Unique
@@ -35,7 +35,7 @@ public abstract class BoatRendererMixin {
     @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
     public Object muffins$redirectRendering(Map instance, Object object, Operation<Object> original, @Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if( iOvenBoat.getOvenBoatVariant().isPresent() ){
+        if(OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString()))){
             return ovenBoatRenderer.getTextureAndModel(iOvenBoat.getOvenBoatVariant().get());
         }
 
@@ -45,7 +45,7 @@ public abstract class BoatRendererMixin {
     @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lnet/minecraft/resources/ResourceLocation;",at = @At("RETURN"))
     public ResourceLocation muffins$getTextureLocation(ResourceLocation original,@Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if( iOvenBoat.getOvenBoatVariant().isPresent() ){
+        if( OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString())) ){
             return ovenBoatRenderer.getTextureLocation(iOvenBoat);
         }
         return original;

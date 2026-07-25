@@ -2,10 +2,8 @@ package net.firemuffin303.muffinsmcapi.fabric.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
 import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.ChestRaftModel;
@@ -18,7 +16,6 @@ public final class MuffinsmcapiFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         MuffinMcAPIClient.init();
-        OvenBoatUtil.entityRendererRegister(EntityRendererRegistry::register);
 
         FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();

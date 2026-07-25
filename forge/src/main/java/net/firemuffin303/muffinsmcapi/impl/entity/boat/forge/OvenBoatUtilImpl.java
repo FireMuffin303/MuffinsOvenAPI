@@ -32,4 +32,8 @@ public class OvenBoatUtilImpl {
     public static Set<Map.Entry<ResourceKey<OvenBoatVariant>, OvenBoatVariant>> entrySet() {
         return MuffinsOvenAPIForge.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries();
     }
+
+    public static boolean hasBoat(ResourceLocation resourceLocation) {
+        return MuffinsOvenAPIForge.OVEN_BOAT_VARIANTS_REGISTRY.get().containsKey(resourceLocation);
+    }
 }

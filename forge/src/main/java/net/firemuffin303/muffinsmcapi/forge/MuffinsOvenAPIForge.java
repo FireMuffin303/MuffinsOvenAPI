@@ -20,7 +20,11 @@ import java.util.function.Supplier;
 @Mod(MuffinsMcAPI.MOD_ID)
 public class MuffinsOvenAPIForge {
 
-    public static Supplier<IForgeRegistry<OvenBoatVariant>> OVEN_BOAT_VARIANTS_REGISTRY;
+    public static Supplier<IForgeRegistry<OvenBoatVariant>> OVEN_BOAT_VARIANTS_REGISTRY = ModBoatVariants.OVEN_BOAT_VARIANT.makeRegistry(() ->
+            new RegistryBuilder<OvenBoatVariant>()
+            .setName(BoatRegistry.OVEN_BOAT_VARIANT.location())
+            .allowModification()
+            .setMaxID(2048));
 
     public MuffinsOvenAPIForge(){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -42,6 +46,7 @@ public class MuffinsOvenAPIForge {
         OvenRegistration.RESOURCE_REGISTRIES.forEach(registry -> registerResources(registry,event));
     }
 
+    /*
     @SubscribeEvent
     public static void registerNewRegistry(NewRegistryEvent event){
         OVEN_BOAT_VARIANTS_REGISTRY = event.create(new RegistryBuilder<OvenBoatVariant>()
@@ -49,6 +54,7 @@ public class MuffinsOvenAPIForge {
                 .allowModification()
                 .setMaxID(2048));
     }
+     */
 
     private static  <T> void registerResources(ResourceRegistry<T> registry,RegisterEvent event) {
         registry.getValues().forEach(tRegistryHolder -> {

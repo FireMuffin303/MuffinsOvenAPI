@@ -1,18 +1,18 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-license = "GPL-3.0"
+license = "MIT"
 
 [[mods]]
-modId = "muffins_ovenapi"
-version = "${version}"
-displayName = "Muffin's Oven API"
+modId = "muffins_api_test"
+version = "1.0"
+displayName = "Muffin's API Test"
 authors = "FireMuffin303"
 description = '''
-A library mod for FireMuffin303's Mods.
-'''
-logoFile = "icon.png"
 
-[[dependencies.muffins_ovenapi]]
+'''
+#logoFile = ""
+
+[[dependencies.muffins_api_test]]
 modId = "forge"
 mandatory = true
 type = "required"
@@ -20,11 +20,10 @@ versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.muffins_ovenapi]]
+[[dependencies.muffins_api_test]]
 modId = "minecraft"
 mandatory = true
 type = "required"
 versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
-
