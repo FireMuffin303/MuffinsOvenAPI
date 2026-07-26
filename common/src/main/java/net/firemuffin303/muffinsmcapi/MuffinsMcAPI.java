@@ -10,10 +10,9 @@ public final class MuffinsMcAPI {
 
     public static void init() {
         BoatRegistry.init();
-        EntityDataSerializers.registerSerializer(OvenBoatUtil.SERIALIZER);
     }
 
     public static ResourceLocation modid(String id){
-        return new ResourceLocation(MOD_ID,id);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID,id);
     }
 }

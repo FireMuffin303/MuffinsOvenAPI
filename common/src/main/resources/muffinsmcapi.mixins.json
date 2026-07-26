@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "camera.CameraMixin",
     "customEffect.AbstractContainerScreenAccessor",
     "customEffect.EffectRenderingInventoryScreenMixin",
     "customEffect.GuiMixin",
@@ -15,7 +16,8 @@
   "mixins": [
     "blockEntityType.BlockEntityTypeMixin",
     "boat.BoatEntityMixin",
-    "boat.ChestBoatEntityMixin"
+    "boat.ChestBoatEntityMixin",
+    "dripstone.PointedDripstoneBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

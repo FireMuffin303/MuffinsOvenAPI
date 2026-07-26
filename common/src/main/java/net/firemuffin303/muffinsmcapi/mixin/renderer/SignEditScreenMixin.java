@@ -21,7 +21,7 @@ public abstract class SignEditScreenMixin {
     public Material muffins$getTexture(Material original, @Local(argsOnly = true)BlockState blockState){
         if(blockState.getBlock() instanceof OvenSign ovenSign){
             ResourceLocation resourceLocation = PlatformUtil.getBlock(blockState.getBlock());
-            return new Material(Sheets.SIGN_SHEET,new ResourceLocation(resourceLocation.getNamespace(),"entity/signs/" + ovenSign.getSignID()));
+            return new Material(Sheets.SIGN_SHEET,ResourceLocation.fromNamespaceAndPath(resourceLocation.getNamespace(),"entity/signs/" + ovenSign.getSignID()));
         }
         return original;
     }

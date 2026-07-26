@@ -29,7 +29,7 @@ public abstract class HangingSignEditRendererMixin {
     public void muffins$init(SignBlockEntity signBlockEntity, boolean bl, boolean bl2, CallbackInfo ci){
         if(signBlockEntity.getBlockState().getBlock() instanceof OvenSign ovenSign){
             ResourceLocation resourceLocation = PlatformUtil.getBlock(signBlockEntity.getBlockState().getBlock());
-            this.texture = (new ResourceLocation(resourceLocation.getNamespace(),ovenSign.getSignID() + ".png")).withPrefix("textures/gui/hanging_signs/");
+            this.texture = (ResourceLocation.fromNamespaceAndPath(resourceLocation.getNamespace(),ovenSign.getSignID() + ".png")).withPrefix("textures/gui/hanging_signs/");
         }
     }
 

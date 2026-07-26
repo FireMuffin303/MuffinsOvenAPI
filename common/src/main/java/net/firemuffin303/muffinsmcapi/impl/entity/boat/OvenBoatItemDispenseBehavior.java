@@ -1,8 +1,8 @@
 package net.firemuffin303.muffinsmcapi.impl.entity.boat;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.EntityType;
@@ -30,13 +30,13 @@ public class OvenBoatItemDispenseBehavior extends DefaultDispenseItemBehavior {
     }
 
     public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
-        Direction direction = blockSource.getBlockState().getValue(DispenserBlock.FACING);
-        Level level = blockSource.getLevel();
+        Direction direction = blockSource.state().getValue(DispenserBlock.FACING);
+        Level level = blockSource.level();
         double d = 0.5625 + (double) EntityType.BOAT.getWidth() / 2.0;
-        double e = blockSource.x() + (double)direction.getStepX() * d;
-        double f = blockSource.y() + (double)((float)direction.getStepY() * 1.125F);
-        double g = blockSource.z() + (double)direction.getStepZ() * d;
-        BlockPos blockPos = blockSource.getPos().relative(direction);
+        double e = blockSource.pos().getX() + (double)direction.getStepX() * d;
+        double f = blockSource.pos().getY() + (double)((float)direction.getStepY() * 1.125F);
+        double g = blockSource.pos().getZ() + (double)direction.getStepZ() * d;
+        BlockPos blockPos = blockSource.pos().relative(direction);
         double h;
         if (level.getFluidState(blockPos).is(FluidTags.WATER)) {
             h = 1.0;
@@ -57,6 +57,6 @@ public class OvenBoatItemDispenseBehavior extends DefaultDispenseItemBehavior {
     }
 
     protected void playSound(BlockSource blockSource) {
-        blockSource.getLevel().levelEvent(1000, blockSource.getPos(), 0);
+        blockSource.level().levelEvent(1000, blockSource.pos(), 0);
     }
 }

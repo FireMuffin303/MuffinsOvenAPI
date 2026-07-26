@@ -35,7 +35,7 @@ public abstract class BoatRendererMixin {
     @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
     public Object muffins$redirectRendering(Map instance, Object object, Operation<Object> original, @Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if(OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString()))){
+        if(OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString()))){
             return ovenBoatRenderer.getTextureAndModel(iOvenBoat.getOvenBoatVariant().get());
         }
 
@@ -45,7 +45,7 @@ public abstract class BoatRendererMixin {
     @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lnet/minecraft/resources/ResourceLocation;",at = @At("RETURN"))
     public ResourceLocation muffins$getTextureLocation(ResourceLocation original,@Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if( OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString())) ){
+        if( OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString())) ){
             return ovenBoatRenderer.getTextureLocation(iOvenBoat);
         }
         return original;

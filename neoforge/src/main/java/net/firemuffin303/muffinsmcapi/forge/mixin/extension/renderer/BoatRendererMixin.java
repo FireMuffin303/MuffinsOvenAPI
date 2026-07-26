@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
-import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPIForge;
+import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPINeoForge;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
@@ -14,14 +14,11 @@ import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.Map;
 
 @Mixin(BoatRenderer.class)
 public abstract class BoatRendererMixin {
@@ -31,9 +28,9 @@ public abstract class BoatRendererMixin {
 
     @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/BoatRenderer;getModelWithLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lcom/mojang/datafixers/util/Pair;"))
     public Pair<ResourceLocation, ListModel<Boat>> muffins$redirectRendering(BoatRenderer instance, Boat boat, Operation<Pair<ResourceLocation, ListModel<Boat>>> original){
-        if(MuffinsOvenAPIForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
+        if(MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
             IOvenBoat iOvenBoat = (IOvenBoat)boat;
-            if(OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString()))){
+            if(OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString()))){
                 return ovenBoatRenderer.getTextureAndModel(iOvenBoat.getOvenBoatVariant().get());
             }
         }
@@ -46,7 +43,7 @@ public abstract class BoatRendererMixin {
 
     @Inject(method = "<init>",at = @At("TAIL"))
     public void muffins$init(EntityRendererProvider.Context context, boolean bl, CallbackInfo ci){
-        if(MuffinsOvenAPIForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
+        if(MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
             this.ovenBoatRenderer = new OvenBoatRenderer(context,bl);
         }
     }
@@ -54,7 +51,7 @@ public abstract class BoatRendererMixin {
     @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lnet/minecraft/resources/ResourceLocation;",at = @At("RETURN"))
     public ResourceLocation muffins$getTextureLocation(ResourceLocation original,@Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if( OvenBoatUtil.hasBoat(new ResourceLocation(iOvenBoat.getBoatVariantString())) ){
+        if( OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString())) ){
             return ovenBoatRenderer.getTextureLocation(iOvenBoat);
         }
         return original;

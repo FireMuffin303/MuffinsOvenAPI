@@ -24,7 +24,7 @@ public interface DirectionalBonemeal extends BonemealableBlock {
     }
 
     @Override
-    default boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl){
+    default boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState){
         return false;
     }
 

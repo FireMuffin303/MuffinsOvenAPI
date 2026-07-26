@@ -24,7 +24,7 @@ public class ResourceRegistry<T> {
     }
 
     public Supplier<T> register(String id,Supplier<T> object){
-        return this.register(new ResourceLocation(this.modId,id),object);
+        return this.register(ResourceLocation.fromNamespaceAndPath(this.modId,id),object);
     }
 
     public Supplier<T> register(ResourceLocation resourceLocation, Supplier<T> object){

@@ -30,7 +30,7 @@ public interface Stackable {
                 player.drop(itemStack, false);
             }
 
-            level.playSound(null,blockPos, SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.BLOCKS);
+            level.playSound(null,blockPos, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS);
 
             if(blockState.getValue(getStackProperty()) == 1){
                 level.removeBlock(blockPos,false);

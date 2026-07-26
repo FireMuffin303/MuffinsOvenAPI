@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 public class OvenWallHangingSignBlock extends WallHangingSignBlock implements OvenSign {
     final String signID;
     public OvenWallHangingSignBlock(Properties arg,String signID) {
-        super(arg, WoodType.OAK);
+        super(WoodType.OAK,arg);
         BlockEntityTypeUtil.addBlockEntityType(BlockEntityType.HANGING_SIGN,this);
         this.signID = signID;
     }

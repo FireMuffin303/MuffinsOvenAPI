@@ -22,7 +22,7 @@ public class OvenBoatRenderer {
             OvenBoatVariant ovenBoatVariant = entry.getValue();
             ResourceLocation resourceLocation = entry.getKey().location();
             String id = bl ? "textures/entity/chest_boat/" + resourceLocation.getPath() + ".png" : "textures/entity/boat/" + resourceLocation.getPath() + ".png";
-            return Pair.of(new ResourceLocation(resourceLocation.getNamespace(),id),this.createBoatModel(context, ovenBoatVariant.raft(), bl,resourceLocation));
+            return Pair.of(ResourceLocation.fromNamespaceAndPath(resourceLocation.getNamespace(),id),this.createBoatModel(context, ovenBoatVariant.raft(), bl,resourceLocation));
         }));
     }
 

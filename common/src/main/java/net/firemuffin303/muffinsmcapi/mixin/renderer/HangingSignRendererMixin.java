@@ -41,7 +41,7 @@ public abstract class HangingSignRendererMixin {
         if(this.muffins$cacheBlock instanceof OvenSign ovenSign){
             ResourceLocation resourceLocation = PlatformUtil.getBlock(this.muffins$cacheBlock);
             this.muffins$cacheBlock = null;
-            return new Material(Sheets.SIGN_SHEET, new ResourceLocation(resourceLocation.getNamespace(),"entity/signs/hanging/" + ovenSign.getSignID()));
+            return new Material(Sheets.SIGN_SHEET, ResourceLocation.fromNamespaceAndPath(resourceLocation.getNamespace(),"entity/signs/hanging/" + ovenSign.getSignID()));
         }
         return original;
     }

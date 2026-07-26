@@ -10,7 +10,7 @@ public class OvenWallSignBlock extends WallSignBlock implements OvenSign {
     final String signID;
 
     public OvenWallSignBlock(Properties arg, String signID) {
-        super(arg, WoodType.OAK);
+        super(WoodType.OAK,arg);
         BlockEntityTypeUtil.addBlockEntityType(BlockEntityType.SIGN,this);
         this.signID = signID;
     }

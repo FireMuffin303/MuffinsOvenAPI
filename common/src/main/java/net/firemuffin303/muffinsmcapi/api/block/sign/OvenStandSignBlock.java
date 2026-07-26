@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 public class OvenStandSignBlock extends StandingSignBlock implements OvenSign {
     final String signID;
     public OvenStandSignBlock(Properties arg,String signID) {
-        super(arg, WoodType.OAK);
+        super(WoodType.OAK,arg);
         BlockEntityTypeUtil.addBlockEntityType(BlockEntityType.SIGN,this);
         this.signID = signID;
     }

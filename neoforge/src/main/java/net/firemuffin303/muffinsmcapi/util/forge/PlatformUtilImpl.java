@@ -5,8 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.fml.ModList;
 
 import java.util.function.Supplier;
 
@@ -54,7 +53,7 @@ public class PlatformUtilImpl {
     }
 
     public static ResourceLocation getBlock(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block);
+        return IForgeRegistries.BLOCKS.getKey(block);
     }
 
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType) {

@@ -2,6 +2,7 @@ package net.firemuffin303.muffinsmcapi.mixin.boat;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
@@ -34,8 +35,8 @@ public abstract class BoatEntityMixin extends Entity implements IOvenBoat {
     }
 
     @Inject(method = "defineSynchedData",at = @At("TAIL"))
-    public void muffinsSynchedData(CallbackInfo ci){
-        this.entityData.define(DATA_CUSTOM_TYPE,"");
+    public void muffinsSynchedData(CallbackInfo ci, @Local(argsOnly = true) SynchedEntityData.Builder builder){
+        builder.define(DATA_CUSTOM_TYPE,"");
     }
 
     @Inject(method = "addAdditionalSaveData",at = @At(value ="TAIL"))
@@ -77,7 +78,7 @@ public abstract class BoatEntityMixin extends Entity implements IOvenBoat {
 
     @Override
     public Optional<OvenBoatVariant> getOvenBoatVariant() {
-        OvenBoatVariant ovenBoatVariant = OvenBoatUtil.getBoat(new ResourceLocation(this.entityData.get(DATA_CUSTOM_TYPE)));
+        OvenBoatVariant ovenBoatVariant = OvenBoatUtil.getBoat(ResourceLocation.tryParse(this.entityData.get(DATA_CUSTOM_TYPE)));
         if(this.entityData.get(DATA_CUSTOM_TYPE).isEmpty() || ovenBoatVariant == null){
             return Optional.empty();
         }

@@ -2,9 +2,14 @@ package net.firemuffin303.muffinsmcapi.util;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
+import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -76,8 +81,19 @@ public class PlatformUtil {
     }
 
     @ExpectPlatform
+    public static void sendServerPacket(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload){
+        throw new AssertionError();
+    }
+
+
+
+    @ExpectPlatform
     public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType){
         throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static void registerClientPacket(CustomPacketPayload.Type<CameraShakePacket> type, StreamCodec<FriendlyByteBuf, CameraShakePacket> streamCodec) {
     }
 
     @FunctionalInterface
