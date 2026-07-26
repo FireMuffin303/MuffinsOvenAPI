@@ -33,6 +33,10 @@ public class MuffinsOvenAPIForge {
 
         MuffinsMcAPI.init();
 
+        NeoForge.EVENT_BUS.addListener(MuffinsMCAPINeoForge::registerCommand);
+        NeoForge.EVENT_BUS.addListener(MuffinsMCAPINeoForge::onRegisterReloadListeners);
+        eventBus.addListener(MuffinsMCAPINeoForge::dataGen);
+
         ModEntityTypes.ENTITY_TYPE.register(eventBus);
         eventBus.register(this);
     }

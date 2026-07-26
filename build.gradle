@@ -49,6 +49,11 @@ subprojects {
         }
 
         maven { url = "https://mvn.devos.one/releases/" }
+
+        maven {
+            name = 'NeoForged'
+            url = 'https://maven.neoforged.net/releases'
+        }
     }
 
     dependencies {
@@ -63,7 +68,7 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    def targetJavaVersion = 17
+    def targetJavaVersion = 21
     tasks.withType(JavaCompile).configureEach {
         it.options.encoding = "UTF-8"
         if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
