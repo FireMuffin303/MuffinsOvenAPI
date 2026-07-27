@@ -28,7 +28,7 @@ public class BonemealItemMixin {
         clickFaceCache = useOnContext.getClickedFace();
     }
 
-    @Inject(method = "applyBonemeal",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;",ordinal = 1), cancellable = true)
+    @Inject(method = "applyBonemeal",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), cancellable = true)
     private static void muffins$growCrop(ItemStack itemStack, Level level, BlockPos blockPos, Player player, CallbackInfoReturnable<Boolean> cir, @Local BlockState blockState){
         if(blockState.getBlock() instanceof DirectionalBonemeal directionBonemealableBlock){
             if(directionBonemealableBlock.isValidBonemealTarget(level,blockPos,blockState,clickFaceCache,level.isClientSide)){

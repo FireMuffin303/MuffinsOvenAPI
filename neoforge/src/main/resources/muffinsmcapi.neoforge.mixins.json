@@ -10,9 +10,6 @@
     "dripstone.PointedDripstoneMixin",
     "extension.bonemeal.BonemealItemMixin"
   ],
-  "mixinextras": {
-    "minVersion": "0.5.0-rc.1"
-  },
   "client": [
     "extension.renderer.BoatRendererMixin"
   ]

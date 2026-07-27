@@ -4,7 +4,6 @@ import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.api.CameraAPI;
 import net.firemuffin303.muffinsmcapi.common.data.DripstoneDataManager;
-import net.firemuffin303.muffinsmcapi.forge.common.ModBoatVariants;
 import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
@@ -42,10 +41,11 @@ public class MuffinsOvenAPINeoForge {
         NeoForge.EVENT_BUS.addListener(MuffinsOvenAPINeoForge::registerCommand);
         NeoForge.EVENT_BUS.addListener(MuffinsOvenAPINeoForge::onRegisterReloadListeners);
         eventBus.addListener(this::registerPostInit);
+        eventBus.addListener(this::customRegistryObject);
         eventBus.addListener(this::registerObject);
 
         ModEntityTypes.ENTITY_TYPE.register(eventBus);
-        eventBus.register(this);
+        //eventBus.register(this);
     }
 
     public void registerPostInit(FMLCommonSetupEvent event){

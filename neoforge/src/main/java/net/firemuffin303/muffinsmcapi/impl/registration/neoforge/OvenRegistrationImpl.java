@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.impl.registration.forge;
+package net.firemuffin303.muffinsmcapi.impl.registration.neoforge;
 
 import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
 

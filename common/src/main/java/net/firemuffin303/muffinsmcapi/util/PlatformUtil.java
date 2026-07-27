@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
@@ -86,14 +87,9 @@ public class PlatformUtil {
     }
 
 
-
-    @ExpectPlatform
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType){
-        throw new AssertionError();
-    }
-
     @ExpectPlatform
     public static void registerClientPacket(CustomPacketPayload.Type<CameraShakePacket> type, StreamCodec<FriendlyByteBuf, CameraShakePacket> streamCodec) {
+        throw new AssertionError();
     }
 
     @FunctionalInterface

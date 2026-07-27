@@ -15,4 +15,6 @@ public abstract class PointedDripstoneMixin {
     private static float muffins$getFluidChance(float original,@Local Fluid fluid){
         return DripstoneFluidRegistry.getFluidChance(fluid,original);
     }
+
+    
 }

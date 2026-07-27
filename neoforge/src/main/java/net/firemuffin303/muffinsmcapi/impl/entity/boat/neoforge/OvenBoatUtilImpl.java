@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.impl.entity.boat.forge;
+package net.firemuffin303.muffinsmcapi.impl.entity.boat.neoforge;
 
 import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPINeoForge;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
@@ -24,14 +24,14 @@ public class OvenBoatUtilImpl {
     }
 
     public static OvenBoatVariant getBoat(ResourceLocation resourceLocation) {
-        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get().getValue(resourceLocation);
+        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get(resourceLocation);
     }
 
     public static Set<Map.Entry<ResourceKey<OvenBoatVariant>, OvenBoatVariant>> entrySet() {
-        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries();
+        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.entrySet();
     }
 
     public static boolean hasBoat(ResourceLocation resourceLocation) {
-        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get().containsKey(resourceLocation);
+        return MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.containsKey(resourceLocation);
     }
 }

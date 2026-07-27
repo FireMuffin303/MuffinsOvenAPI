@@ -1,13 +1,14 @@
-package net.firemuffin303.muffinsmcapi.util.forge;
+package net.firemuffin303.muffinsmcapi.util.neoforge;
 
-import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.ModList;
-
-import java.util.function.Supplier;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class PlatformUtilImpl {
     public static boolean isFabric() {
@@ -53,14 +54,18 @@ public class PlatformUtilImpl {
     }
 
     public static ResourceLocation getBlock(Block block) {
-        return IForgeRegistries.BLOCKS.getKey(block);
-    }
-
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder <T> entityType) {
-        return ModEntityTypes.ENTITY_TYPE.register(id,() -> entityType.sized(1.375F, 0.5625F).clientTrackingRange(10).build(id));
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     public static boolean isModInstalled(String id) {
         return ModList.get().isLoaded(id);
+    }
+
+    public static void sendServerPacket(ServerPlayer serverPlayer, CustomPacketPayload customPacketPayload){
+        PacketDistributor.sendToPlayer(serverPlayer,customPacketPayload);
+    }
+
+    public static <T extends CustomPacketPayload> void registerClientPacket(CustomPacketPayload.Type<T> type, StreamCodec<? super FriendlyByteBuf,T> codec) {
+
     }
 }

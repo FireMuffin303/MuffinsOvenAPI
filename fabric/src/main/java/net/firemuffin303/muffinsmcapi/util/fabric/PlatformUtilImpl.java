@@ -68,14 +68,6 @@ public class PlatformUtilImpl {
         return BuiltInRegistries.BLOCK.getKey(block);
     }
 
-
-
-
-    public static <T extends Entity>  Supplier<EntityType<T>> registerEntityType(String id, EntityType.Builder<T> entityType) {
-        EntityType<T> entityType1 = Registry.register(BuiltInRegistries.ENTITY_TYPE,MuffinsMcAPI.modid(id),entityType.sized(1.375F, 0.5625F).clientTrackingRange(10).build(id));
-        return () -> entityType1;
-    }
-
     public static boolean isModInstalled(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
     }

@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[2,)"
 license = "GPL-3.0"
 
 [[mods]]
@@ -13,10 +13,9 @@ A library mod for FireMuffin303's Mods.
 logoFile = "icon.png"
 
 [[dependencies.muffins_ovenapi]]
-modId = "forge"
-mandatory = true
+modId = "neoforge"
 type = "required"
-versionRange = "[47,)"
+versionRange = "[21,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -28,3 +27,8 @@ versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
 
+[[mixins]]
+config = "muffinsmcapi.mixins.json"
+
+[[mixins]]
+config = "muffinsmcapi.neoforge.mixins.json"

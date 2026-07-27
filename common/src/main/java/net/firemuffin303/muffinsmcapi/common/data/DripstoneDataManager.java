@@ -41,8 +41,8 @@ public class DripstoneDataManager extends SimplePreparableReloadListener<Map<Str
         Map<String,Map<ResourceLocation,JsonElement>> mapMap = new HashMap<>();
         Map<ResourceLocation,JsonElement> blockFluid = new HashMap<>();
         Map<ResourceLocation,JsonElement> fluidChance = new HashMap<>();
-        SimpleJsonResourceReloadListener.scanDirectory(resourceManager,Registries.elementsDirPath(ModRegistries.BLOCK_FLUID_INFO),GSON,blockFluid);
-        SimpleJsonResourceReloadListener.scanDirectory(resourceManager,Registries.elementsDirPath(ModRegistries.FLUID_CHANCE_INFO),GSON,fluidChance);
+        SimpleJsonResourceReloadListener.scanDirectory(resourceManager,ModRegistries.BLOCK_FLUID_INFO.location().getPath(),GSON,blockFluid);
+        SimpleJsonResourceReloadListener.scanDirectory(resourceManager,ModRegistries.FLUID_CHANCE_INFO.location().getPath(),GSON,fluidChance);
         mapMap.put("block_fluid",blockFluid);
         mapMap.put("fluid_chance",fluidChance);
         return mapMap;
@@ -53,6 +53,8 @@ public class DripstoneDataManager extends SimplePreparableReloadListener<Map<Str
         RegistryOps<JsonElement> registryOps = this.registries.createSerializationContext(JsonOps.INSTANCE);
         ImmutableMap.Builder<ResourceLocation, BlockFluidInfo> builder = ImmutableMap.builder();
         ImmutableMap.Builder<ResourceLocation, FluidChanceInfo> fluidChanceInfoBuilder = ImmutableMap.builder();
+
+
 
         object.get("block_fluid").forEach((resourceLocation, jsonElement) -> {
             try{

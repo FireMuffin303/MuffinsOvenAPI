@@ -29,7 +29,7 @@ public class MuffinsMCAPIForgeClient {
 
 
     public void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){
-        MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get().getEntries().forEach(resourceKeyOvenBoatVariantEntry -> {
+        MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ? RaftModel::createBodyModel : BoatModel::createBodyModel);

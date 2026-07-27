@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
+import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPINeoForge;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
@@ -12,6 +13,7 @@ import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +30,7 @@ public abstract class BoatRendererMixin {
 
     @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/BoatRenderer;getModelWithLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lcom/mojang/datafixers/util/Pair;"))
     public Pair<ResourceLocation, ListModel<Boat>> muffins$redirectRendering(BoatRenderer instance, Boat boat, Operation<Pair<ResourceLocation, ListModel<Boat>>> original){
-        if(MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
+        if(BuiltInRegistries.REGISTRY.containsKey(MuffinsMcAPI.modid("oven_boat_type"))){
             IOvenBoat iOvenBoat = (IOvenBoat)boat;
             if(OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString()))){
                 return ovenBoatRenderer.getTextureAndModel(iOvenBoat.getOvenBoatVariant().get());
@@ -43,7 +45,7 @@ public abstract class BoatRendererMixin {
 
     @Inject(method = "<init>",at = @At("TAIL"))
     public void muffins$init(EntityRendererProvider.Context context, boolean bl, CallbackInfo ci){
-        if(MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.get() != null){
+        if(BuiltInRegistries.REGISTRY.containsKey(MuffinsMcAPI.modid("oven_boat_type"))){
             this.ovenBoatRenderer = new OvenBoatRenderer(context,bl);
         }
     }
