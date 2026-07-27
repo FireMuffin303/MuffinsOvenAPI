@@ -12,7 +12,6 @@ import net.firemuffin303.muffinsmcapi.common.ModRegistries;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.data.BlockFluidInfo;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.data.FluidChanceInfo;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -53,8 +52,6 @@ public class DripstoneDataManager extends SimplePreparableReloadListener<Map<Str
         RegistryOps<JsonElement> registryOps = this.registries.createSerializationContext(JsonOps.INSTANCE);
         ImmutableMap.Builder<ResourceLocation, BlockFluidInfo> builder = ImmutableMap.builder();
         ImmutableMap.Builder<ResourceLocation, FluidChanceInfo> fluidChanceInfoBuilder = ImmutableMap.builder();
-
-
 
         object.get("block_fluid").forEach((resourceLocation, jsonElement) -> {
             try{
