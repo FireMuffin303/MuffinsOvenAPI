@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.impl.entity.boat.neoforge;
+package net.firemuffin303.muffinsmcapi.impl.entity.boat.forge;
 
 import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPINeoForge;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;

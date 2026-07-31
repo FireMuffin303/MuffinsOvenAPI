@@ -2,6 +2,7 @@ package net.firemuffin303.muffinapitest;
 
 import net.firemuffin303.muffinapitest.common.registry.ModBoats;
 import net.firemuffin303.muffinapitest.common.registry.ModItems;
+import net.firemuffin303.muffinapitest.common.registry.ModMobEffects;
 import net.firemuffin303.muffinsmcapi.api.block.dripstone.DripstoneFluidRegistry;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.DripstoneFluidEvent;
 import net.minecraft.core.BlockPos;
@@ -18,6 +19,7 @@ public class MuffinsAPITest {
     public static void init(){
         ModBoats.init();
         ModItems.init();
+        ModMobEffects.init();
 
         DripstoneFluidRegistry.SOURCE_STATE_EVENT.add(new DripstoneFluidEvent() {
             @Override

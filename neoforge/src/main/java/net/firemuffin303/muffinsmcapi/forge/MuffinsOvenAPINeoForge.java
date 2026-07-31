@@ -1,5 +1,6 @@
 package net.firemuffin303.muffinsmcapi.forge;
 
+import com.mojang.logging.LogUtils;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.api.CameraAPI;
@@ -10,21 +11,15 @@ import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
 import net.firemuffin303.muffinsmcapi.impl.registration.ResourceRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
-
-import java.util.function.Supplier;
 
 @Mod(MuffinsMcAPI.MOD_ID)
 public class MuffinsOvenAPINeoForge {
@@ -45,7 +40,6 @@ public class MuffinsOvenAPINeoForge {
         eventBus.addListener(this::registerObject);
 
         ModEntityTypes.ENTITY_TYPE.register(eventBus);
-        //eventBus.register(this);
     }
 
     public void registerPostInit(FMLCommonSetupEvent event){
@@ -70,8 +64,10 @@ public class MuffinsOvenAPINeoForge {
     }
 
     private static  <T> void registerResources(ResourceRegistry<T> registry,RegisterEvent event) {
-        registry.getValues().forEach(tRegistryHolder -> {
-            event.register(registry.getResource(),helper -> helper.register(tRegistryHolder.getResourceLocation(),tRegistryHolder.resolve()));
+        registry.getValues().forEach((holder,supplier) -> {
+            event.register(registry.getResource(),holder.getResourceLocation(), () -> supplier.get());
+            holder.createHolder(false);
+
         });
     }
 

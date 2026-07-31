@@ -22,8 +22,8 @@ public interface Stackable {
 
     ItemLike getPickUpItem();
 
-    default InteractionResult takeItem(Level level, BlockPos blockPos, BlockState blockState, Player player, InteractionHand interactionHand){
-        if(player.getAbilities().mayBuild && player.getItemInHand(interactionHand).isEmpty()){
+    default InteractionResult takeItem(Level level, BlockPos blockPos, BlockState blockState, Player player){
+        if(player.getAbilities().mayBuild){
             int i = blockState.getValue(getStackProperty());
             ItemStack itemStack = new ItemStack(getPickUpItem());
             if (!player.getInventory().add(itemStack)) {

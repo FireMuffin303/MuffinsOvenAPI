@@ -1,4 +1,4 @@
-package net.firemuffin303.muffinsmcapi.util.neoforge;
+package net.firemuffin303.muffinsmcapi.util.forge;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;

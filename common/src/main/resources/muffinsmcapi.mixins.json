@@ -17,7 +17,8 @@
     "blockEntityType.BlockEntityTypeMixin",
     "boat.BoatEntityMixin",
     "boat.ChestBoatEntityMixin",
-    "dripstone.PointedDripstoneBlockMixin"
+    "dripstone.PointedDripstoneBlockMixin",
+    "registry.RegistryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
