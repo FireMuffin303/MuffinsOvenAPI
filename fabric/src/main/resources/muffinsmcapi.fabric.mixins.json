@@ -8,12 +8,16 @@
   },
   "mixins": [
     "dripstone.PointedDripstoneBlockMixin",
-    "extension.bonemeal.BonemealItemMixin"
+    "extension.bonemeal.BonemealItemMixin",
+    "recipebook.RecipeBookSettingsAccessor"
   ],
   "mixinextras": {
     "minVersion": "0.5.0-rc.1"
   },
   "client": [
+    "recipebook.RecipeBookCategoriesAccessor",
+    "recipebook.RecipeBookCategoriesMixin",
+    "recipebook.RecipeBookComponentMixin",
     "renderer.BoatRendererMixin"
   ]
 }

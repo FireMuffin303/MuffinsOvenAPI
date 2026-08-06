@@ -13,6 +13,9 @@
   "entrypoints": {
     "main": [
       "net.firemuffin303.muffincapitest.MuffinsAPITestFabric"
+    ],
+    "ovenapi_recipe": [
+      "net.firemuffin303.muffincapitest.RecipeRegistryTest"
     ]
   },
   "depends": {
@@ -21,6 +24,9 @@
     "java": ">=17",
     "fabric-api": "*"
   },
+  "mixins": [
+    "muffins_api_test.mixin.json"
+  ],
   "suggests": {
     "another-mod": "*"
   }

@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.firemuffin303.muffincapitest.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CraftingMenuMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

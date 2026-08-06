@@ -24,6 +24,11 @@ subprojects {
 
     repositories {
         maven {
+            name = "Jitpack"
+            url 'https://jitpack.io/'
+        }
+
+        maven {
             // location of the maven that hosts JEI files before January 2023
             name = "Progwml6's maven"
             url = "https://dvs1.progwml6.com/files/maven/"

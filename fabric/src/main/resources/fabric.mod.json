@@ -13,6 +13,11 @@
   },
   "license": "GPL-3.0",
   "icon": "assets/muffins_ovenapi/icon.png",
+  "custom": {
+    "modmenu": {
+      "badges": ["library"]
+    }
+  },
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -21,8 +26,14 @@
     "client": [
       "net.firemuffin303.muffinsmcapi.fabric.client.MuffinsmcapiFabricClient"
     ],
+    "preLaunch": [
+      "net.firemuffin303.muffinsmcapi.fabric.MuffinsOvenAPIPreLaunch"
+    ],
     "jei_mod_plugin": [
       "net.firemuffin303.muffinsmcapi.impl.customEffect.integrations.CommonJEIPlugin"
+    ],
+    "mm:early_risers": [
+      "net.firemuffin303.muffinsmcapi.fabric.ModEarlyRiser"
     ]
   },
   "mixins": [
