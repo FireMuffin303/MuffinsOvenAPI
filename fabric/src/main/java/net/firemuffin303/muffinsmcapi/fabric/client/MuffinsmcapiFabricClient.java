@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
 import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
+import net.firemuffin303.muffinsmcapi.fabric.network.ModRecipePacket;
 import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -27,5 +28,9 @@ public final class MuffinsmcapiFabricClient implements ClientModInitializer {
             EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ?  RaftModel::createBodyModel : BoatModel::createBodyModel);
             EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("chest_boat/"),"main"),isRaft ?  ChestRaftModel::createBodyModel : ChestBoatModel::createBodyModel);
         });
+
+
+        ClientPlayNetworking.registerGlobalReceiver(ModRecipePacket.TYPE,(payload, context) -> payload.handle());
+
     }
 }
