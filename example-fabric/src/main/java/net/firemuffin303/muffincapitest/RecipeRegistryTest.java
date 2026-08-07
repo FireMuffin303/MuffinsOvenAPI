@@ -1,15 +1,9 @@
 package net.firemuffin303.muffincapitest;
 
-import net.firemuffin303.muffinapitest.MuffinsAPITest;
 import net.firemuffin303.muffinsmcapi.fabric.api.IRecipeBookInitializer;
 import net.firemuffin303.muffinsmcapi.impl.recipebooks.OvenRecipeBookRegistry;
-import net.minecraft.client.RecipeBookCategories;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.List;
 

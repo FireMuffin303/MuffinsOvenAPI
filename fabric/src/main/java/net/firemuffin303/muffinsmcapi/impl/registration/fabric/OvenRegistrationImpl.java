@@ -14,7 +14,10 @@ public class OvenRegistrationImpl {
             OvenRegistration.setPlatformHandler(new OvenRegistration.RegistryPlatformHandler() {
                 @Override
                 public <T> void register(ResourceRegistry<T> registry) {
-                    registry.getValues().forEach((holder,supplier) -> Registry.register(MuffinsmcapiFabric.INSTANCE.get(registry.getResource()),holder.getResourceLocation(),supplier.get()));
+                    registry.getValues().forEach((holder,supplier) -> {
+                        Registry.register(MuffinsmcapiFabric.INSTANCE.get(registry.getResource()),holder.getResourceLocation(),supplier.get());
+                        holder.createHolder(false);
+                    });
                 }
             });
         }

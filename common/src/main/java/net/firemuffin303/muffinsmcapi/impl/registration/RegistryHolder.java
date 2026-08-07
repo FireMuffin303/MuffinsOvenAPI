@@ -120,11 +120,21 @@ public class RegistryHolder<T> implements Holder<T>, Supplier<T> {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        return obj instanceof Holder<?> h && h.kind() == Kind.REFERENCE && h.unwrapKey().orElse(null) == this.key;
+        if(obj instanceof Holder<?> h){
+            return h.kind() == Kind.REFERENCE && h.unwrapKey().orElse(null) == this.key;
+
+        }
+
+        return false;
     }
 
     public Holder<T> getHolderObject() {
         createHolder(false);
         return this.holderObject != null ? this.holderObject : this;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.key.hashCode();
     }
 }

@@ -18,6 +18,7 @@ public class ModMobEffects {
     public static final ResourceRegistry<Potion> POTION_TEST = ResourceRegistry.create(Registries.POTION, MuffinsAPITest.MOD_ID);
 
     //TODO : field holder not the same from registration holder.
+    //Object registered as Custom Holder but the game would like to call holder reference
     public static final Holder<MobEffect> JARONA = MOB_EFFECT_TEST.registerHolder("jarona",() -> new ModMobEffect(MobEffectCategory.BENEFICIAL, 3402751));
     public static final Holder<Potion> JARONA_POTION = POTION_TEST.registerHolder("jarona",() -> new Potion(new MobEffectInstance(JARONA,20*20)));
 

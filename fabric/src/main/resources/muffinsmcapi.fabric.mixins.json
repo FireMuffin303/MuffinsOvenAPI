@@ -10,7 +10,8 @@
     "dripstone.PointedDripstoneBlockMixin",
     "extension.bonemeal.BonemealItemMixin",
     "recipebook.RecipeBookSettingsMixin",
-    "recipebook.ServerRecipeBookMixin"
+    "recipebook.ServerRecipeBookMixin",
+    "registration.HolderReference"
   ],
   "mixinextras": {
     "minVersion": "0.5.0-rc.1"
