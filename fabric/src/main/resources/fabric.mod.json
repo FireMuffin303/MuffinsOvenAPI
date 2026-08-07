@@ -26,9 +26,6 @@
     "client": [
       "net.firemuffin303.muffinsmcapi.fabric.client.MuffinsmcapiFabricClient"
     ],
-    "preLaunch": [
-      "net.firemuffin303.muffinsmcapi.fabric.MuffinsOvenAPIPreLaunch"
-    ],
     "jei_mod_plugin": [
       "net.firemuffin303.muffinsmcapi.impl.customEffect.integrations.CommonJEIPlugin"
     ],

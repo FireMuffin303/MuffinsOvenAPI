@@ -16,7 +16,6 @@ import net.firemuffin303.muffinsmcapi.common.data.DripstoneDataManager;
 import net.firemuffin303.muffinsmcapi.fabric.api.CustomRegistryHelper;
 import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
 import net.firemuffin303.muffinsmcapi.fabric.mixin.recipebook.RecipeBookCategoriesAccessor;
-import net.firemuffin303.muffinsmcapi.fabric.mixin.recipebook.RecipeBookSettingsAccessor;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.impl.recipebooks.OvenRecipeBookRegistry;
 import net.minecraft.client.RecipeBookCategories;
@@ -30,6 +29,8 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +77,9 @@ public final class MuffinsmcapiFabric implements ModInitializer {
             }
         });
 
+
+
+        /*
         Map<RecipeBookCategories, List<RecipeBookCategories>> re = OvenRecipeBookRegistry.INSTANCE.getMODDED_AGGREGATE_CATEGORY().entrySet().stream()
                 .collect(
                         Collectors.toMap(
@@ -84,10 +88,13 @@ public final class MuffinsmcapiFabric implements ModInitializer {
                         )
                 );
 
+
         RecipeBookCategoriesAccessor.setAggregateCategory(
                 Stream.concat(RecipeBookCategories.AGGREGATE_CATEGORIES.entrySet().stream(),
                         re.entrySet().stream()
                 ).collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue)));
+
+         */
 
     }
 }

@@ -13,6 +13,6 @@ public abstract class CraftingMenuMixin {
 
     @ModifyReturnValue(method = "getRecipeBookType",at = @At("RETURN"))
     public RecipeBookType muffins$debug(RecipeBookType original){
-        return OvenRecipeBookRegistry.INSTANCE.getRecipeBookType(RecipeRegistryTest.ECHO_CHAMBER_TYPE);
+        return RecipeBookType.valueOf(RecipeRegistryTest.ECHO_CHAMBER_TYPE);
     }
 }

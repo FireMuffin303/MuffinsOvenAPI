@@ -23,13 +23,13 @@ public class ModEarlyRiser implements Runnable{
         String recipeBookCategories = remapper.mapClassName("intermediary","net.minecraft.class_314");
 
 
-        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().forEach((typeID,recipe) -> {
-            ClassTinkerers.enumBuilder(recipeBookType).addEnum(typeID).build();
+        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(key -> {
+            ClassTinkerers.enumBuilder(recipeBookType).addEnum(key).build();
         });
 
         OvenRecipeBookRegistry.INSTANCE.getRecipeCategory().forEach(category -> {
             ClassTinkerers.enumBuilder(recipeBookCategories, ItemStack[].class)
-                    .addEnum(category.id(), () -> new Object[]{ category.stacks().get().stream().map(ItemStack::new).toArray(ItemStack[]::new) }).build();
+                    .addEnum(category.id(), () -> new Object[]{ category.stacks().get()}).build();
         });
     }
 }

@@ -4,7 +4,10 @@ import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
 import net.firemuffin303.muffinapitest.MuffinsAPITest;
 import net.firemuffin303.muffinsmcapi.impl.recipebooks.OvenRecipeBookRegistry;
+import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 
 public class MuffinsAPITestFabric implements ModInitializer {
 
@@ -12,6 +15,11 @@ public class MuffinsAPITestFabric implements ModInitializer {
     public void onInitialize() {
         MuffinsAPITest.init();
 
-        LogUtils.getLogger().info("{}", OvenRecipeBookRegistry.INSTANCE.getRecipeBookType(RecipeRegistryTest.ECHO_CHAMBER_TYPE));
+        OvenRecipeBookRegistry.INSTANCE.registerRecipeCategoryEvent(RecipeType.CRAFTING,new OvenRecipeBookRegistry.RecipeCategoryEvent() {
+            @Override
+            public RecipeBookCategories getCategory( RecipeHolder<?> recipeHolder) {
+                return RecipeBookCategories.valueOf(RecipeRegistryTest.ECHO_CHAMBER_BASE);
+            }
+        });
     }
 }

@@ -9,12 +9,13 @@
   "mixins": [
     "dripstone.PointedDripstoneBlockMixin",
     "extension.bonemeal.BonemealItemMixin",
-    "recipebook.RecipeBookSettingsAccessor"
+    "recipebook.RecipeBookSettingsMixin"
   ],
   "mixinextras": {
     "minVersion": "0.5.0-rc.1"
   },
   "client": [
+    "recipebook.ClientRecipeBookMixin",
     "recipebook.RecipeBookCategoriesAccessor",
     "recipebook.RecipeBookCategoriesMixin",
     "recipebook.RecipeBookComponentMixin",
