@@ -2,6 +2,7 @@ package net.firemuffin303.muffinsmcapi.impl.entity.boat.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
@@ -18,7 +19,7 @@ public class OvenBoatRenderer {
     private final Map<OvenBoatVariant, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
 
     public OvenBoatRenderer(EntityRendererProvider.Context context, boolean bl) {
-        this.boatResources = OvenBoatUtil.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
+        this.boatResources = BoatRegistry.OVEN_BOAT_REGISTRY.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getValue,(entry) -> {
             OvenBoatVariant ovenBoatVariant = entry.getValue();
             ResourceLocation resourceLocation = entry.getKey().location();
             String id = bl ? "textures/entity/chest_boat/" + resourceLocation.getPath() + ".png" : "textures/entity/boat/" + resourceLocation.getPath() + ".png";
@@ -35,7 +36,7 @@ public class OvenBoatRenderer {
     }
 
     public boolean hasBoatVariantData(ResourceLocation resourceLocation){
-        return OvenBoatUtil.hasBoat(resourceLocation);
+        return BoatRegistry.OVEN_BOAT_REGISTRY.containsKey(resourceLocation);
     }
 
 

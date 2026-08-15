@@ -1,9 +1,11 @@
 package net.firemuffin303.muffinsmcapi.fabric;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -21,7 +23,9 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -39,9 +43,8 @@ import java.util.function.Function;
 
 public final class MuffinsmcapiFabric implements ModInitializer {
 
-    private static final Registry<OvenBoatVariant> registryOvenBoat = FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY;
     public static final CustomRegistryHelper INSTANCE = new CustomRegistryHelper();
-    private static final Registry<OvenBoatVariant> OVEN_BOAT_VARIANT_REGISTRY = INSTANCE.register(BoatRegistry.OVEN_BOAT_VARIANT,registryOvenBoat);
+    private static final Registry<OvenBoatVariant> OVEN_BOAT_VARIANT_REGISTRY = INSTANCE.register(BoatRegistry.OVEN_BOAT_VARIANT,FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY);
 
 
     @Override
@@ -74,8 +77,5 @@ public final class MuffinsmcapiFabric implements ModInitializer {
         });
 
         PayloadTypeRegistry.playS2C().register(ModRecipePacket.TYPE,ModRecipePacket.STREAM_CODEC);
-
-
-
     }
 }

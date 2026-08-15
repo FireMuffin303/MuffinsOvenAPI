@@ -1,14 +1,18 @@
 package net.firemuffin303.muffinsmcapi.impl.registration.forge;
 
 import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
+import net.firemuffin303.muffinsmcapi.impl.registration.ResourceRegistry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.neoforge.registries.RegistryBuilder;
 
 public class OvenRegistrationImpl {
     @org.jetbrains.annotations.ApiStatus.Internal
-    public static OvenRegistration.RegistryPlatformHandler getPlatformHandler() {
-        if(OvenRegistration.PLATFORM_HANDLER == null){
-            OvenRegistration.setPlatformHandler(OvenRegistration::addRegistry);
-        }
+    public static <T> void registerRegistry(ResourceRegistry<T> registry) {
+        OvenRegistration.addRegistry(registry);
+    }
 
-        return OvenRegistration.PLATFORM_HANDLER;
+    public static <T> Registry<T> buildRegistry(ResourceKey<Registry<T>> resourceKey) {
+        return new RegistryBuilder<>(resourceKey).maxId(2048).create();
     }
 }

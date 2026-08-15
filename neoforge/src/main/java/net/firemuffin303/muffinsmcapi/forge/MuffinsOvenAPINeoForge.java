@@ -29,8 +29,6 @@ public class MuffinsOvenAPINeoForge {
             .create();
 
     public MuffinsOvenAPINeoForge(IEventBus eventBus){
-        OvenRegistration.setPlatformHandler(OvenRegistration::addRegistry);
-
         MuffinsMcAPI.init();
 
         NeoForge.EVENT_BUS.addListener(MuffinsOvenAPINeoForge::registerCommand);
@@ -50,8 +48,7 @@ public class MuffinsOvenAPINeoForge {
     }
 
     public void customRegistryObject(NewRegistryEvent newRegistryEvent){
-        newRegistryEvent.register(OVEN_BOAT_VARIANTS_REGISTRY);
-
+        OvenRegistration.REGISTRY_LIST.forEach(newRegistryEvent::register);
     }
 
     private static void registerCommand(RegisterCommandsEvent commandsEvent){

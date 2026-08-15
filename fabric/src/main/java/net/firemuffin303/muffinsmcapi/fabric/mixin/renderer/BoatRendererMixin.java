@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.logging.LogUtils;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.client.OvenBoatRenderer;
@@ -35,7 +36,7 @@ public abstract class BoatRendererMixin {
     @WrapOperation(method = "render(Lnet/minecraft/world/entity/vehicle/Boat;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
     public Object muffins$redirectRendering(Map instance, Object object, Operation<Object> original, @Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if(OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString()))){
+        if(BoatRegistry.OVEN_BOAT_REGISTRY.containsKey(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString()))){
             return ovenBoatRenderer.getTextureAndModel(iOvenBoat.getOvenBoatVariant().get());
         }
 
@@ -45,7 +46,7 @@ public abstract class BoatRendererMixin {
     @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/vehicle/Boat;)Lnet/minecraft/resources/ResourceLocation;",at = @At("RETURN"))
     public ResourceLocation muffins$getTextureLocation(ResourceLocation original,@Local(argsOnly = true) Boat boat){
         IOvenBoat iOvenBoat = (IOvenBoat)boat;
-        if( OvenBoatUtil.hasBoat(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString())) ){
+        if( BoatRegistry.OVEN_BOAT_REGISTRY.containsKey(ResourceLocation.tryParse(iOvenBoat.getBoatVariantString())) ){
             return ovenBoatRenderer.getTextureLocation(iOvenBoat);
         }
         return original;

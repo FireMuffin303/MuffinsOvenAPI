@@ -3,6 +3,7 @@ package net.firemuffin303.muffinsmcapi.mixin.boat;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.IOvenBoat;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
@@ -73,12 +74,12 @@ public abstract class BoatEntityMixin extends Entity implements IOvenBoat {
 
     @Override
     public void setVariant(OvenBoatVariant variant) {
-        this.entityData.set(DATA_CUSTOM_TYPE, OvenBoatUtil.getBoatKey(variant).toString());
+        this.entityData.set(DATA_CUSTOM_TYPE, BoatRegistry.OVEN_BOAT_REGISTRY.getKey(variant).toString());
     }
 
     @Override
     public Optional<OvenBoatVariant> getOvenBoatVariant() {
-        OvenBoatVariant ovenBoatVariant = OvenBoatUtil.getBoat(ResourceLocation.tryParse(this.entityData.get(DATA_CUSTOM_TYPE)));
+        OvenBoatVariant ovenBoatVariant = BoatRegistry.OVEN_BOAT_REGISTRY.get(ResourceLocation.tryParse(this.entityData.get(DATA_CUSTOM_TYPE)));
         if(this.entityData.get(DATA_CUSTOM_TYPE).isEmpty() || ovenBoatVariant == null){
             return Optional.empty();
         }
