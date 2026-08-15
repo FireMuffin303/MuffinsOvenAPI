@@ -28,9 +28,6 @@
     ],
     "jei_mod_plugin": [
       "net.firemuffin303.muffinsmcapi.impl.customEffect.integrations.CommonJEIPlugin"
-    ],
-    "mm:early_risers": [
-      "net.firemuffin303.muffinsmcapi.fabric.ModEarlyRiser"
     ]
   },
   "mixins": [

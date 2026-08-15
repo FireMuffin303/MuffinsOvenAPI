@@ -1,6 +1,7 @@
 package net.firemuffin303.muffinsmcapi.forge.client;
 
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
 import net.firemuffin303.muffinsmcapi.forge.MuffinsOvenAPINeoForge;
 import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
@@ -29,7 +30,7 @@ public class MuffinsMCAPIForgeClient {
 
 
     public void registerEntityRender(EntityRenderersEvent.RegisterLayerDefinitions event){
-        MuffinsOvenAPINeoForge.OVEN_BOAT_VARIANTS_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
+        BoatRegistry.OVEN_BOAT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             event.registerLayerDefinition(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ? RaftModel::createBodyModel : BoatModel::createBodyModel);

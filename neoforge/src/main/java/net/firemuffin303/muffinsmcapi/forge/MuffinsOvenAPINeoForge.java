@@ -24,10 +24,6 @@ import net.neoforged.neoforge.registries.RegistryBuilder;
 @Mod(MuffinsMcAPI.MOD_ID)
 public class MuffinsOvenAPINeoForge {
 
-    public static Registry<OvenBoatVariant> OVEN_BOAT_VARIANTS_REGISTRY = new RegistryBuilder<>(BoatRegistry.OVEN_BOAT_VARIANT)
-            .maxId(2048)
-            .create();
-
     public MuffinsOvenAPINeoForge(IEventBus eventBus){
         MuffinsMcAPI.init();
 

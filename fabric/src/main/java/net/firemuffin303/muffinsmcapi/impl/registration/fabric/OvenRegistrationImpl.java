@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceKey;
 public class OvenRegistrationImpl {
     @org.jetbrains.annotations.ApiStatus.Internal
     public static <T> void registerRegistry(ResourceRegistry<T> registry) {
+        LogUtils.getLogger().info("{}",registry.getResource());
         registry.getValues().forEach((holder, supplier) -> {
             Registry.register(MuffinsmcapiFabric.INSTANCE.get(registry.getResource()),holder.getResourceLocation(),supplier.get());
             holder.createHolder(false);
@@ -22,6 +23,8 @@ public class OvenRegistrationImpl {
     }
 
     public static <T> Registry<T> buildRegistry(ResourceKey<Registry<T>> resourceKey) {
-        return FabricRegistryBuilder.createSimple(resourceKey).attribute(RegistryAttribute.SYNCED).buildAndRegister();
+        Registry<T> registry = FabricRegistryBuilder.createSimple(resourceKey).attribute(RegistryAttribute.SYNCED).buildAndRegister();
+        MuffinsmcapiFabric.INSTANCE.register(resourceKey,registry);
+        return registry;
     }
 }

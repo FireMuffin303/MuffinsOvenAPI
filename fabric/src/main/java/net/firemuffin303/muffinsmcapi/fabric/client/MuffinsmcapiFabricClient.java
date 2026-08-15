@@ -3,8 +3,8 @@ package net.firemuffin303.muffinsmcapi.fabric.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.client.MuffinMcAPIClient;
-import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
 import net.firemuffin303.muffinsmcapi.fabric.network.ModRecipePacket;
 import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
 import net.minecraft.client.model.BoatModel;
@@ -22,7 +22,7 @@ public final class MuffinsmcapiFabricClient implements ClientModInitializer {
 
         ClientPlayNetworking.registerGlobalReceiver(CameraShakePacket.TYPE,(cameraShakePacket, context) -> CameraShakePacket.handle(cameraShakePacket));
 
-        FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
+        BoatRegistry.OVEN_BOAT_REGISTRY.entrySet().forEach(resourceKeyOvenBoatVariantEntry -> {
             ResourceLocation id = resourceKeyOvenBoatVariantEntry.getKey().location();
             boolean isRaft = resourceKeyOvenBoatVariantEntry.getValue().raft();
             EntityModelLayerRegistry.registerModelLayer(new ModelLayerLocation(id.withPrefix("boat/"),"main"),isRaft ?  RaftModel::createBodyModel : BoatModel::createBodyModel);

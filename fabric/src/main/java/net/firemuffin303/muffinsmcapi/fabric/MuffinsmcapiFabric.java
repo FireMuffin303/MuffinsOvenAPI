@@ -1,11 +1,7 @@
 package net.firemuffin303.muffinsmcapi.fabric;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -15,7 +11,6 @@ import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.api.CameraAPI;
 import net.firemuffin303.muffinsmcapi.common.data.DripstoneDataManager;
 import net.firemuffin303.muffinsmcapi.fabric.api.CustomRegistryHelper;
-import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
 import net.firemuffin303.muffinsmcapi.fabric.network.ModRecipePacket;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.commands.CommandBuildContext;
@@ -23,30 +18,18 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Function;
 
 public final class MuffinsmcapiFabric implements ModInitializer {
-
     public static final CustomRegistryHelper INSTANCE = new CustomRegistryHelper();
-    private static final Registry<OvenBoatVariant> OVEN_BOAT_VARIANT_REGISTRY = INSTANCE.register(BoatRegistry.OVEN_BOAT_VARIANT,FabricOvenRegistry.OVEN_BOAT_VARIANT_REGISTRY);
-
-
+    
     @Override
     public void onInitialize() {
         MuffinsMcAPI.init();

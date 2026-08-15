@@ -3,23 +3,14 @@ package net.firemuffin303.muffinsmcapi.util.fabric;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
-import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
-import net.firemuffin303.muffinsmcapi.fabric.MuffinsmcapiFabric;
-import net.firemuffin303.muffinsmcapi.fabric.api.FabricOvenRegistry;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
-
-import java.util.function.Supplier;
 
 public class PlatformUtilImpl {
     public static boolean isFabric(){
