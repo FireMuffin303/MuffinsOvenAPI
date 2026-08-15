@@ -13,13 +13,10 @@
   "entrypoints": {
     "main": [
       "net.firemuffin303.muffincapitest.MuffinsAPITestFabric"
-    ],
-    "ovenapi_recipe": [
-      "net.firemuffin303.muffincapitest.RecipeRegistryTest"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.18.4",
+    "fabricloader": ">=0.19.0",
     "minecraft": "~${minecraft_version}",
     "java": ">=17",
     "fabric-api": "*"
@@ -27,6 +24,7 @@
   "mixins": [
     "muffins_api_test.mixin.json"
   ],
+  "accessWidener": "muffins_api_test.classtweaker",
   "suggests": {
     "another-mod": "*"
   }

@@ -21,6 +21,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MuffinsAPITestFabric implements ModInitializer {
@@ -29,10 +30,14 @@ public class MuffinsAPITestFabric implements ModInitializer {
     public void onInitialize() {
         MuffinsAPITest.init();
 
+        OvenRecipeBookRegistry.INSTANCE.registerRecipeBook(ModRecipeBook.ECHO_CHAMBER_TYPE, List.of(ModRecipeBook.ECHO_CHAMBER_SEARCH,ModRecipeBook.ECHO_CHAMBER_BASE));
+
+        OvenRecipeBookRegistry.INSTANCE.registerAggregateCategory(ModRecipeBook.ECHO_CHAMBER_SEARCH, List.of(ModRecipeBook.ECHO_CHAMBER_BASE));
+
         OvenRecipeBookRegistry.INSTANCE.registerRecipeCategoryEvent(RecipeType.CRAFTING,new OvenRecipeBookRegistry.RecipeCategoryEvent() {
             @Override
             public RecipeBookCategories getCategory( RecipeHolder<?> recipeHolder) {
-                return RecipeBookCategories.valueOf(RecipeRegistryTest.ECHO_CHAMBER_BASE);
+                return ModRecipeBook.ECHO_CHAMBER_SEARCH;
             }
         });
 

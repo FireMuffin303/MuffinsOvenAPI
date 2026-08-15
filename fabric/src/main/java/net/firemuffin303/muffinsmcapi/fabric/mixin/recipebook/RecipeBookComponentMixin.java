@@ -11,10 +11,8 @@ import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Debug(export = true)
 @Mixin(RecipeBookComponent.class)
 public abstract class RecipeBookComponentMixin {
-
     @Definition(id = "CRAFTING_SEARCH", field = "Lnet/minecraft/client/RecipeBookCategories;CRAFTING_SEARCH:Lnet/minecraft/client/RecipeBookCategories;")
     @Definition(id = "recipeBookCategories", local = @Local(type = RecipeBookCategories.class))
     @Expression("recipeBookCategories == CRAFTING_SEARCH")

@@ -20,8 +20,7 @@ import java.util.List;
 public abstract class ServerRecipeBookMixin extends RecipeBook {
     @Inject(method = {"sendRecipes"}, at = {@At("TAIL")})
     public void muffins$sendRecipes(ClientboundRecipePacket.State state, ServerPlayer serverPlayer, List<ResourceLocation> list, CallbackInfo ci){
-        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(id -> {
-            RecipeBookType recipeBookType = RecipeBookType.valueOf(id);
+        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(recipeBookType -> {
             ServerPlayNetworking.send(serverPlayer, new ModRecipePacket(recipeBookType,
                     this.getBookSettings().isOpen(recipeBookType),
                     this.getBookSettings().isFiltering(recipeBookType)

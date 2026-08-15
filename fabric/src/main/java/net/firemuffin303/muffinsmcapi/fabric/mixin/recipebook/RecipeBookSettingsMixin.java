@@ -28,7 +28,7 @@ public class RecipeBookSettingsMixin {
     public void muffins$init(CallbackInfo ci){
         Map<RecipeBookType,Pair<String,String>> newMap = new HashMap<>(TAG_FIELDS);
         OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(s -> {
-            newMap.put(ClassTinkerers.getEnum(RecipeBookType.class,s),Pair.of("is"+s+"Open","is"+s+"FilteringCraftable"));
+            newMap.put(s,Pair.of("is"+s+"Open","is"+s+"FilteringCraftable"));
         });
 
         TAG_FIELDS = Map.copyOf(newMap);
@@ -38,7 +38,7 @@ public class RecipeBookSettingsMixin {
     public void muffins$initMap(Map map, CallbackInfo ci){
         OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(s -> {
             if(!states.containsKey(s)){
-                states.put(ClassTinkerers.getEnum(RecipeBookType.class,s),new RecipeBookSettings.TypeSettings(false,false));
+                states.put(s,new RecipeBookSettings.TypeSettings(false,false));
             }
         });
     }

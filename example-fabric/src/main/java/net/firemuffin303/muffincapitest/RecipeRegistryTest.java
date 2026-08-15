@@ -14,10 +14,5 @@ public class RecipeRegistryTest implements IRecipeBookInitializer {
 
     @Override
     public void register(OvenRecipeBookRegistry recipeBookRegistry) {
-        recipeBookRegistry.registerRecipeCategories(ECHO_CHAMBER_SEARCH,() -> new ItemStack[]{new ItemStack(Items.COMPASS)});
-        recipeBookRegistry.registerRecipeCategories(ECHO_CHAMBER_BASE,() -> new ItemStack[]{new ItemStack(Items.ECHO_SHARD)});
-        recipeBookRegistry.registerRecipeBook(ECHO_CHAMBER_TYPE, List.of(ECHO_CHAMBER_SEARCH,ECHO_CHAMBER_BASE));
-
-        recipeBookRegistry.registerAggregateCategory(ECHO_CHAMBER_SEARCH, List.of(ECHO_CHAMBER_BASE));
     }
 }

@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow'
+    id "com.gradleup.shadow"
 }
 
 architectury {
@@ -12,13 +12,14 @@ configurations {
         canBeResolved = true
         canBeConsumed = false
     }
+    shadowCommon
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentFabric.extendsFrom common
 }
 
 loom{
-    accessWidenerPath = project(":common").loom.accessWidenerPath
+    accessWidenerPath = file("src/main/resources/muffins_api_test.classtweaker")
 }
 
 dependencies {
@@ -38,7 +39,7 @@ dependencies {
     common(project(path: ":example-common", configuration: "namedElements")) { transitive false }
 
     //common(project(path: ':example:common', configuration: 'namedElements')) { transitive false }
-    //shadowBundle project(path: ':example:common', configuration: 'transformProductionFabric')
+    shadowCommon (project(path: ':example-common', configuration: 'transformProductionFabric')){ transitive false }
 }
 
 processResources {
@@ -50,4 +51,30 @@ processResources {
         expand version: project.version,
                 minecraft_version : project.minecraft_version
     }
+}
+
+shadowJar {
+    exclude "architectury.common.json"
+    exclude "META-INF"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier = "dev-shadow"
+}
+
+remapJar {
+    injectAccessWidener = true
+    input.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier = null
+}
+
+jar {
+    archiveClassifier = "dev"
+}
+
+sourcesJar {
+    def commonSources = project(":example-common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
