@@ -1,6 +1,7 @@
 package net.firemuffin303.muffinsmcapi;
 
 import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
+import net.firemuffin303.muffinsmcapi.common.ModDataComponentTypes;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatUtil;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +11,7 @@ public final class MuffinsMcAPI {
 
     public static void init() {
         BoatRegistry.init();
+        ModDataComponentTypes.DATA_COMPONENTS.init();
     }
 
     public static ResourceLocation modid(String id){
