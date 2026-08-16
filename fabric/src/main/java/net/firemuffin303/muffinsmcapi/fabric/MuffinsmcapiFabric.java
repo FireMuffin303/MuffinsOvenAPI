@@ -7,17 +7,14 @@ import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.firemuffin303.muffinsmcapi.MuffinsMcAPI;
 import net.fabricmc.api.ModInitializer;
-import net.firemuffin303.muffinsmcapi.api.BoatRegistry;
 import net.firemuffin303.muffinsmcapi.api.CameraAPI;
 import net.firemuffin303.muffinsmcapi.common.data.DripstoneDataManager;
 import net.firemuffin303.muffinsmcapi.fabric.api.CustomRegistryHelper;
 import net.firemuffin303.muffinsmcapi.fabric.network.ModRecipePacket;
-import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -29,7 +26,7 @@ import java.util.function.Function;
 
 public final class MuffinsmcapiFabric implements ModInitializer {
     public static final CustomRegistryHelper INSTANCE = new CustomRegistryHelper();
-    
+
     @Override
     public void onInitialize() {
         MuffinsMcAPI.init();

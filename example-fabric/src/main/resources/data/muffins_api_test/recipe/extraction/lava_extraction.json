@@ -1,0 +1,10 @@
+{
+  "type": "muffins_api_test:extraction",
+  "category": "fluid",
+  "ingredient": {
+    "item": "minecraft:magma_block"
+  },
+  "result": {
+    "id": "minecraft:lava_bucket"
+  }
+}

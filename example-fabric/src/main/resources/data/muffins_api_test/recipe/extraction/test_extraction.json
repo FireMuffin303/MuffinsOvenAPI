@@ -1,0 +1,10 @@
+{
+  "type": "muffins_api_test:extraction",
+  "category": "gas",
+  "ingredient": {
+    "item": "minecraft:blaze_rod"
+  },
+  "result": {
+    "id": "minecraft:blaze_powder"
+  }
+}

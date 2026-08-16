@@ -7,6 +7,7 @@ import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class OvenRegistration {
     public static final List<ResourceRegistry<?>> RESOURCE_REGISTRIES = new ArrayList<>();
@@ -25,6 +26,11 @@ public class OvenRegistration {
 
     @ExpectPlatform
     public static <T> void registerRegistry(ResourceRegistry<T> registry){
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T> void fabricRegister(RegistryHolder<T> registryHolder,Supplier<T> object){
         throw new AssertionError();
     }
 

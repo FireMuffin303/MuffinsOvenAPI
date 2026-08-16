@@ -1,5 +1,6 @@
 classTweaker v2 named
 
-extend-enum net/minecraft/world/inventory/RecipeBookType MUFFINS_API_TEST_ECHO_CHAMBER
-extend-enum net/minecraft/client/RecipeBookCategories MUFFINS_API_TEST_ECHO_CHAMBER_SEARCH
-extend-enum net/minecraft/client/RecipeBookCategories MUFFINS_API_TEST_ECHO_CHAMBER_BASE
+extend-enum net/minecraft/world/inventory/RecipeBookType MUFFINS_API_TEST_EXTRACTION_TYPE
+extend-enum net/minecraft/client/RecipeBookCategories MUFFINS_API_TEST_EXTRACTION_SEARCH
+extend-enum net/minecraft/client/RecipeBookCategories MUFFINS_API_TEST_EXTRACTION_FLUID
+extend-enum net/minecraft/client/RecipeBookCategories MUFFINS_API_TEST_EXTRACTION_GAS

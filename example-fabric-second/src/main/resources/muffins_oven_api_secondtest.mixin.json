@@ -1,15 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.firemuffin303.muffincapitest.mixin",
+  "package": "net.firemuffin303.muffinsovensecond.fabric.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CraftingMenuMixin",
     "RecipeBookTypeMixin"
   ],
   "client": [
-    "RecipeBookComponentMixin",
-    "RecipeCategoryMixin"
+    "RecipeCategoriesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

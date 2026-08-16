@@ -32,6 +32,9 @@ public class RegistryHolder<T> implements Holder<T>, Supplier<T> {
         return this.key.location();
     }
 
+    public ResourceKey<Registry<T>> getResourceKey(){
+        return this.key.registryKey();
+    }
 
     @SuppressWarnings("unchecked")
     public void createHolder(boolean shouldThrow){

@@ -15,15 +15,15 @@ import java.util.function.Supplier;
 public class OvenRecipeBookRegistry {
     public static OvenRecipeBookRegistry INSTANCE = new OvenRecipeBookRegistry();
 
-    private final Map<RecipeBookType,List<RecipeBookCategories>> RECIPE_BOOKS_MAP = new HashMap<>();
-    private final Map<RecipeBookCategories, List<RecipeBookCategories>> MODDED_AGGREGATE_CATEGORY = new HashMap<>();
+    private final Map<RecipeBookType,Supplier<List<RecipeBookCategories>>> RECIPE_BOOKS_MAP = new HashMap<>();
+    private final Map<Supplier<RecipeBookCategories>, Supplier<List<RecipeBookCategories>>> MODDED_AGGREGATE_CATEGORY = new HashMap<>();
     private final Map<RecipeType<?>, RecipeCategoryEvent> RECIPE_EVENT = new HashMap<>();
 
-    public void registerRecipeBook(RecipeBookType stationID, List<RecipeBookCategories> categories){
+    public void registerRecipeBook(RecipeBookType stationID, Supplier<List<RecipeBookCategories>>  categories){
         RECIPE_BOOKS_MAP.put(stationID,categories);
     }
 
-    public void registerAggregateCategory(RecipeBookCategories recipeBookCategories, List<RecipeBookCategories> list){
+    public void registerAggregateCategory(Supplier<RecipeBookCategories> recipeBookCategories, Supplier<List<RecipeBookCategories> > list){
         MODDED_AGGREGATE_CATEGORY.put(recipeBookCategories,list);
     }
 
@@ -33,10 +33,10 @@ public class OvenRecipeBookRegistry {
 
     @InternalApi
     public List<RecipeBookCategories> getRecipeBookCategory(RecipeBookType recipeBookType) {
-        return RECIPE_BOOKS_MAP.get(recipeBookType);
+        return RECIPE_BOOKS_MAP.get(recipeBookType).get();
     }
 
-    public Map<RecipeBookType, List<RecipeBookCategories>> getRecipeBook() {
+    public Map<RecipeBookType, Supplier<List<RecipeBookCategories>>> getRecipeBook() {
         return RECIPE_BOOKS_MAP;
     }
 
@@ -44,7 +44,7 @@ public class OvenRecipeBookRegistry {
         return RECIPE_BOOKS_MAP.containsKey(name);
     }
 
-    public Map<RecipeBookCategories, List<RecipeBookCategories>> getMODDED_AGGREGATE_CATEGORY() {
+    public Map<Supplier<RecipeBookCategories>, Supplier<List<RecipeBookCategories>>> getMODDED_AGGREGATE_CATEGORY() {
         return MODDED_AGGREGATE_CATEGORY;
     }
 
@@ -55,7 +55,7 @@ public class OvenRecipeBookRegistry {
 
     @InternalApi
     public boolean shouldShowRecipeBookIcon(RecipeBookCategories recipeBookCategories){
-        List<RecipeBookCategories> result = MODDED_AGGREGATE_CATEGORY.keySet().stream().filter(id -> id.equals(recipeBookCategories)).toList();
+        List<RecipeBookCategories> result = MODDED_AGGREGATE_CATEGORY.keySet().stream().map(Supplier::get).filter(id -> id.equals(recipeBookCategories)).toList();
         return !result.isEmpty();
     }
 
@@ -64,7 +64,7 @@ public class OvenRecipeBookRegistry {
     }
 
     public interface RecipeCategoryEvent{
-        RecipeBookCategories getCategory(RecipeHolder<?> recipeHolder);
+        Supplier<RecipeBookCategories> getCategory(RecipeHolder<?> recipeHolder);
     }
 
 }

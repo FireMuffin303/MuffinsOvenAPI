@@ -33,16 +33,17 @@ public class ResourceRegistry<T> {
     }
 
     public Supplier<T> register(ResourceLocation resourceLocation, Supplier<T> object){
-        return registerHolder(resourceLocation,key -> object.get());
+        return registerHolder(resourceLocation,object);
     }
 
     public Holder<T> registerHolder(String id,Supplier<T> object ){
-        return registerHolder(ResourceLocation.fromNamespaceAndPath(this.modId,id), key -> object.get());
+        return registerHolder(ResourceLocation.fromNamespaceAndPath(this.modId,id),object);
     }
 
-    public RegistryHolder<T> registerHolder(ResourceLocation resourceLocation, Function<ResourceLocation,T> function){
+    public RegistryHolder<T> registerHolder(ResourceLocation resourceLocation, Supplier<T> supplier){
         RegistryHolder<T> registryHolder = new RegistryHolder<>(this.resource,resourceLocation);
-        this.values.putIfAbsent(registryHolder,() -> function.apply(resourceLocation));
+        this.values.putIfAbsent(registryHolder,supplier);
+        OvenRegistration.fabricRegister(registryHolder,this.values.get(registryHolder)); //so it could register when recipe book called. and it broke somehow
         return registryHolder;
     }
 

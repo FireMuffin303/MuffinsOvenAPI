@@ -1,8 +1,6 @@
 package net.firemuffin303.muffinapitest;
 
-import net.firemuffin303.muffinapitest.common.registry.ModBoats;
-import net.firemuffin303.muffinapitest.common.registry.ModItems;
-import net.firemuffin303.muffinapitest.common.registry.ModMobEffects;
+import net.firemuffin303.muffinapitest.common.registry.*;
 import net.firemuffin303.muffinsmcapi.api.block.dripstone.DripstoneFluidRegistry;
 import net.firemuffin303.muffinsmcapi.impl.dripstone.DripstoneFluidEvent;
 import net.minecraft.core.BlockPos;
@@ -18,6 +16,9 @@ public class MuffinsAPITest {
 
     public static void init(){
         ModBoats.init();
+        ModRecipes.RECIPE.init();
+        ModRecipes.RECIPE_SERIALIZER.init();
+        ModBlocks.BLOCK.init();
         ModItems.init();
         ModMobEffects.init();
 
@@ -37,5 +38,8 @@ public class MuffinsAPITest {
                 }
             }
         });
+
+
+
     }
 }

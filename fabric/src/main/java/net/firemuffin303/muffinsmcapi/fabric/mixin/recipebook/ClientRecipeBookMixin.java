@@ -9,15 +9,17 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.function.Supplier;
+
 @Mixin(ClientRecipeBook.class)
 public abstract class ClientRecipeBookMixin {
     @Inject(method = "getCategory",at = @At("HEAD"), cancellable = true)
     private static void muffins$getCategory(RecipeHolder<?> recipeHolder, CallbackInfoReturnable<RecipeBookCategories> cir){
         OvenRecipeBookRegistry.RecipeCategoryEvent recipeCategoryEvent = OvenRecipeBookRegistry.INSTANCE.getRECIPE_EVENT().get(recipeHolder.value().getType());
         if(recipeCategoryEvent != null){
-            RecipeBookCategories recipeBookCategories = recipeCategoryEvent.getCategory(recipeHolder);
+            Supplier<RecipeBookCategories> recipeBookCategories = recipeCategoryEvent.getCategory(recipeHolder);
             if(recipeBookCategories != null){
-                cir.setReturnValue(recipeBookCategories);
+                cir.setReturnValue(recipeBookCategories.get());
             }
         }
     }

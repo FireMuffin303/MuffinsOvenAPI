@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class RecipeBookComponentMixin {
     @Definition(id = "CRAFTING_SEARCH", field = "Lnet/minecraft/client/RecipeBookCategories;CRAFTING_SEARCH:Lnet/minecraft/client/RecipeBookCategories;")
     @Definition(id = "recipeBookCategories", local = @Local(type = RecipeBookCategories.class))
-    @Expression("recipeBookCategories == CRAFTING_SEARCH")
+    @Expression("recipeBookCategories != CRAFTING_SEARCH")
     @ModifyExpressionValue(method = "updateTabs",at = @At("MIXINEXTRAS:EXPRESSION"))
     public boolean muffins$checkRecipeType(boolean original, @Local RecipeBookCategories categories){
         if(OvenRecipeBookRegistry.INSTANCE.shouldShowRecipeBookIcon(categories)){

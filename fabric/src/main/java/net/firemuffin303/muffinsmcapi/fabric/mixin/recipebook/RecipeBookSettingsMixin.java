@@ -1,7 +1,7 @@
 package net.firemuffin303.muffinsmcapi.fabric.mixin.recipebook;
 
-import com.chocohead.mm.api.ClassTinkerers;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import net.firemuffin303.muffinsmcapi.impl.recipebooks.OvenRecipeBookRegistry;
 import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -28,7 +28,7 @@ public class RecipeBookSettingsMixin {
     public void muffins$init(CallbackInfo ci){
         Map<RecipeBookType,Pair<String,String>> newMap = new HashMap<>(TAG_FIELDS);
         OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(s -> {
-            newMap.put(s,Pair.of("is"+s+"Open","is"+s+"FilteringCraftable"));
+            newMap.put(s,Pair.of("is"+s.name()+"Open","is"+s.name()+"FilteringCraftable"));
         });
 
         TAG_FIELDS = Map.copyOf(newMap);
