@@ -28,15 +28,15 @@ public class ResourceRegistry<T> {
         return new ResourceRegistry<>(resourceKey,modId);
     }
 
-    public Supplier<T> register(String id,Supplier<T> object){
+    public RegistryHolder<T> register(String id,Supplier<T> object){
         return this.register(ResourceLocation.fromNamespaceAndPath(this.modId,id),object);
     }
 
-    public Supplier<T> register(ResourceLocation resourceLocation, Supplier<T> object){
+    public RegistryHolder<T> register(ResourceLocation resourceLocation, Supplier<T> object){
         return registerHolder(resourceLocation,object);
     }
 
-    public Holder<T> registerHolder(String id,Supplier<T> object ){
+    public RegistryHolder<T> registerHolder(String id,Supplier<T> object ){
         return registerHolder(ResourceLocation.fromNamespaceAndPath(this.modId,id),object);
     }
 
