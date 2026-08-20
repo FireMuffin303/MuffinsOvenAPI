@@ -43,6 +43,6 @@ public class ResourceRegistry<T> {
     }
 
     public void init() {
-        OvenRegistration.getPlatformHandler().register(this);
+        OvenRegistration.registerRegistry(this);
     }
 }

@@ -29,7 +29,6 @@ public class MuffinsOvenAPIForge {
     public MuffinsOvenAPIForge(){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBoatVariants.OVEN_BOAT_VARIANT.register(eventBus);
-        OvenRegistration.setPlatformHandler(OvenRegistration::addRegistry);
 
         MuffinsMcAPI.init();
 

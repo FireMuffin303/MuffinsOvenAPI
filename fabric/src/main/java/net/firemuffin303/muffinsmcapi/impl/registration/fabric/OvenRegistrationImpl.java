@@ -8,19 +8,9 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 public class OvenRegistrationImpl {
-    @org.jetbrains.annotations.ApiStatus.Internal
-    public static OvenRegistration.RegistryPlatformHandler getPlatformHandler() {
-        if(OvenRegistration.PLATFORM_HANDLER == null){
-            OvenRegistration.setPlatformHandler(new OvenRegistration.RegistryPlatformHandler() {
-                @Override
-                public <T> void register(ResourceRegistry<T> registry) {
-                    registry.getValues().forEach(tRegistryHolder -> {
-                        Registry.register(MuffinsmcapiFabric.INSTANCE.get(registry.getResource()),tRegistryHolder.getResourceLocation(),tRegistryHolder.resolve());
-                    });
-                }
-            });
-        }
-
-        return OvenRegistration.PLATFORM_HANDLER;
+    public static <T> void registerRegistry(ResourceRegistry<T> registry) {
+        registry.getValues().forEach(registryHolder -> {
+            Registry.register(MuffinsmcapiFabric.INSTANCE.get(registry.getResource()),registryHolder.getResourceLocation(),registryHolder.resolve());
+        });
     }
 }

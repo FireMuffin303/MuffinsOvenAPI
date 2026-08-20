@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OvenRegistration {
-    public static RegistryPlatformHandler PLATFORM_HANDLER;
 
     public static final List<ResourceRegistry<?>> RESOURCE_REGISTRIES = new ArrayList<>();
 
@@ -16,20 +15,9 @@ public class OvenRegistration {
         RESOURCE_REGISTRIES.add(registry);
     }
 
-    @ApiStatus.Internal
-    public static void setPlatformHandler(RegistryPlatformHandler handler) {
-        PLATFORM_HANDLER = handler;
-    }
-
     @ExpectPlatform
-    @ApiStatus.Internal
-    public static RegistryPlatformHandler getPlatformHandler() {
+    public static <T> void registerRegistry(ResourceRegistry<T> registry){
         throw new AssertionError();
-    }
-
-    @FunctionalInterface
-    public interface RegistryPlatformHandler {
-        <T> void register(ResourceRegistry<T> registry);
     }
 
 }
