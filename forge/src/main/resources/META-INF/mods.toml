@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-license = "GPL-3.0"
+license = "MIT"
 
 [[mods]]
 modId = "muffins_ovenapi"
@@ -10,7 +10,7 @@ authors = "FireMuffin303"
 description = '''
 A library mod for FireMuffin303's Mods.
 '''
-logoFile = "icon.png"
+logoFile = "assets/muffins_ovenapi/icon.png"
 
 [[dependencies.muffins_ovenapi]]
 modId = "forge"

@@ -11,7 +11,7 @@
     "homepage": "https://github.com/FireMuffin303/MuffinsOvenAPI",
     "issues": "https://github.com/FireMuffin303/MuffinsOvenAPI/issues"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "icon": "assets/muffins_ovenapi/icon.png",
   "environment": "*",
   "entrypoints": {

@@ -6,10 +6,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 
 public class BoatRegistry {
-    /**
-     * Boat Registration is modified from Terraform Wood API.
-     * **/
-
     public static final ResourceKey<Registry<OvenBoatVariant>> OVEN_BOAT_VARIANT = ResourceKey.createRegistryKey(MuffinsMcAPI.modid("oven_boat_type"));
 
     public static void init(){}
