@@ -1,5 +1,8 @@
 package net.firemuffin303.muffinsmcapi.util.fabric;
 
+import dev.emi.emi.config.EffectLocation;
+import dev.emi.emi.config.EmiConfig;
+import dev.emi.emi.platform.EmiAgnos;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
@@ -29,11 +32,6 @@ public class PlatformUtilImpl {
         return FabricLoader.getInstance().isModLoaded("emi");
     }
 
-    /*
-    public static boolean emiEffectLocationHidden() {
-        return EmiConfig.effectLocation == EffectLocation.HIDDEN;
-    }
-
     public static boolean emiEffectRenderTop() {
         return EmiConfig.effectLocation == EffectLocation.TOP;
     }
@@ -49,7 +47,6 @@ public class PlatformUtilImpl {
     public static boolean emiAgnosIsForge() {
         return EmiAgnos.isForge();
     }
-    */
 
     public static boolean isDevelopment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();

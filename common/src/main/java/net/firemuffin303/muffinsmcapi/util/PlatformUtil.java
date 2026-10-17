@@ -52,11 +52,6 @@ public class PlatformUtil {
     }
 
     @ExpectPlatform
-    public static boolean emiEffectLocationHidden(){
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
     public static boolean emiEffectRenderTop(){
         throw new AssertionError();
     }

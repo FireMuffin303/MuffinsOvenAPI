@@ -11,10 +11,6 @@ import java.util.List;
 public class EMIEffectIntegration {
 
     public static Collection<CustomEffectRenderer> shouldHidden(Collection<CustomEffectRenderer> collection) {
-        if (PlatformUtil.emiEffectLocationHidden()) {
-            return List.of();
-        }
-
         return collection;
     }
 

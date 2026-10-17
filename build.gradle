@@ -47,7 +47,6 @@ subprojects {
             url = "https://api.modrinth.com/maven"
         }
 
-
         maven {
             name = "TerraformersMC"
             url = "https://maven.terraformersmc.com/"
@@ -58,6 +57,11 @@ subprojects {
         maven {
             name = 'NeoForged'
             url = 'https://maven.neoforged.net/releases'
+        }
+
+        maven {
+            name = "Sleeping Town"
+            url = "https://repo.sleeping.town/"
         }
     }
 
