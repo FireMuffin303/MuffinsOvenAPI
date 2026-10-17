@@ -49,6 +49,11 @@ subprojects {
         }
 
         maven { url = "https://mvn.devos.one/releases/" }
+
+        maven {
+            name = "Sleeping Town"
+            url = "https://repo.sleeping.town/"
+        }
     }
 
     dependencies {
