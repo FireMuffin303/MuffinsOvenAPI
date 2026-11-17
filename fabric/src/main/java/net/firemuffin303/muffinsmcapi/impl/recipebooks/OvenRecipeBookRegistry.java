@@ -59,6 +59,10 @@ public class OvenRecipeBookRegistry {
         return !result.isEmpty();
     }
 
+    public static boolean isVanillaBookType(RecipeBookType recipeBookType){
+        return recipeBookType == RecipeBookType.CRAFTING || recipeBookType == RecipeBookType.FURNACE || recipeBookType == RecipeBookType.SMOKER || recipeBookType == RecipeBookType.BLAST_FURNACE;
+    }
+
     public record RecipeCategory(String id, Supplier<ItemStack[]> stacks,boolean shouldShow){
 
     }

@@ -5,10 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.firemuffin303.muffinsmcapi.impl.recipebooks.OvenRecipeBookRegistry;
 import net.minecraft.stats.RecipeBookSettings;
 import net.minecraft.world.inventory.RecipeBookType;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -27,19 +24,19 @@ public class RecipeBookSettingsMixin {
     @Inject(method = "<init>()V",at = @At("TAIL"))
     public void muffins$init(CallbackInfo ci){
         Map<RecipeBookType,Pair<String,String>> newMap = new HashMap<>(TAG_FIELDS);
-        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(s -> {
-            newMap.put(s,Pair.of("is"+s.name()+"Open","is"+s.name()+"FilteringCraftable"));
-        });
+        for(RecipeBookType recipeBookType : RecipeBookType.values()){
+            if(OvenRecipeBookRegistry.isVanillaBookType(recipeBookType)){continue;}
+            newMap.put(recipeBookType,Pair.of("is"+recipeBookType.name()+"Open","is"+recipeBookType.name()+"FilteringCraftable"));
+        }
 
         TAG_FIELDS = Map.copyOf(newMap);
     }
 
     @Inject(method = "<init>(Ljava/util/Map;)V",at = @At("TAIL"))
     public void muffins$initMap(Map map, CallbackInfo ci){
-        OvenRecipeBookRegistry.INSTANCE.getRecipeBook().keySet().forEach(s -> {
-            if(!states.containsKey(s)){
-                states.put(s,new RecipeBookSettings.TypeSettings(false,false));
-            }
-        });
+        for(RecipeBookType recipeBookType : RecipeBookType.values()){
+            if(OvenRecipeBookRegistry.isVanillaBookType(recipeBookType)){continue;}
+            states.put(recipeBookType,new RecipeBookSettings.TypeSettings(false,false));
+        }
     }
 }
