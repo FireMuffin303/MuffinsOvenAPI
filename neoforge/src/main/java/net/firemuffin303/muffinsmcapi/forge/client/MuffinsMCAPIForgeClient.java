@@ -25,7 +25,7 @@ public class MuffinsMCAPIForgeClient {
         MuffinMcAPIClient.init();
 
         eventBus.addListener(this::registerEntityRender);
-        eventBus.addListener(this::registerPacket);
+
     }
 
 
@@ -38,9 +38,5 @@ public class MuffinsMCAPIForgeClient {
         });
     }
 
-    private void registerPacket(RegisterPayloadHandlersEvent event){
-        final PayloadRegistrar registrar = event.registrar("1");
-        registrar.playToClient(CameraShakePacket.TYPE,CameraShakePacket.STREAM_CODEC,new MainThreadPayloadHandler<>((arg, iPayloadContext) -> CameraShakePacket.handle(arg)));
-        //registrar.playToClient(CustomRaidDebugPacket.TYPE,CustomRaidDebugPacket.STREAM_CODEC,new MainThreadPayloadHandler<>((arg, iPayloadContext) -> CustomRaidDebugPacket.handle(arg)));
-    }
+
 }

@@ -9,6 +9,7 @@ import net.firemuffin303.muffinsmcapi.forge.common.ModEntityTypes;
 import net.firemuffin303.muffinsmcapi.impl.entity.boat.OvenBoatVariant;
 import net.firemuffin303.muffinsmcapi.impl.registration.OvenRegistration;
 import net.firemuffin303.muffinsmcapi.impl.registration.ResourceRegistry;
+import net.firemuffin303.muffinsmcapi.network.CameraShakePacket;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +18,9 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.MainThreadPayloadHandler;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
@@ -32,7 +36,7 @@ public class MuffinsOvenAPINeoForge {
         eventBus.addListener(this::registerPostInit);
         eventBus.addListener(this::customRegistryObject);
         eventBus.addListener(this::registerObject);
-
+        eventBus.addListener(this::registerPacket);
         ModEntityTypes.ENTITY_TYPE.register(eventBus);
     }
 
@@ -49,6 +53,12 @@ public class MuffinsOvenAPINeoForge {
 
     private static void registerCommand(RegisterCommandsEvent commandsEvent){
         CameraAPI.registerCommand(commandsEvent.getDispatcher(),commandsEvent.getBuildContext(),commandsEvent.getCommandSelection());
+    }
+
+    private void registerPacket(RegisterPayloadHandlersEvent event){
+        final PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToClient(CameraShakePacket.TYPE,CameraShakePacket.STREAM_CODEC,new MainThreadPayloadHandler<>((arg, iPayloadContext) -> CameraShakePacket.handle(arg)));
+        //registrar.playToClient(CustomRaidDebugPacket.TYPE,CustomRaidDebugPacket.STREAM_CODEC,new MainThreadPayloadHandler<>((arg, iPayloadContext) -> CustomRaidDebugPacket.handle(arg)));
     }
 
     private static void onRegisterReloadListeners(AddReloadListenerEvent event) {
